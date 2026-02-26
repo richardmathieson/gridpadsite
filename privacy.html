@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — GridPad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(60, 60, 80, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 100%, rgba(40, 50, 60, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pp-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pp-logo {
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      font-size: 15px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .pp-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .pp-back:hover { color: rgba(255,255,255,0.8); }
+
+    .pp-container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+    }
+
+    .pp-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .pp-effective {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.02em;
+      margin-bottom: 48px;
+    }
+
+    .pp-switcher-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 14px;
+    }
+
+    .pp-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 56px;
+    }
+
+    .pp-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.5);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      user-select: none;
+      white-space: nowrap;
+      outline: none;
+    }
+    .pp-pill:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.8);
+    }
+    .pp-pill.active {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .pp-content {
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+    .pp-content.hidden { opacity: 0; transform: translateY(8px); }
+    .pp-content.visible { opacity: 1; transform: translateY(0); }
+
+    .pp-voice-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 32px;
+      width: fit-content;
+    }
+    .pp-voice-badge.show { display: inline-flex; }
+
+    .pp-intro {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pp-section { margin-bottom: 48px; }
+
+    .pp-section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .pp-section p {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .pp-footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pp-footer-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .pp-footer-links { display: flex; gap: 20px; }
+
+    .pp-footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .pp-footer-link:hover { color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 600px) {
+      .pp-title { font-size: 30px; }
+      .pp-container { padding: 40px 18px 80px; }
+      .pp-pill { padding: 7px 12px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="pp-header">
+    <a class="pp-logo" href="https://gridpadsite.vercel.app">
+      <span>📝</span> GridPad
+    </a>
+    <a class="pp-back" href="https://gridpadsite.vercel.app">← Back to site</a>
+  </header>
+
+  <div class="pp-container">
+    <h1 class="pp-title">Privacy Policy</h1>
+    <p class="pp-effective">Effective February 26, 2026</p>
+
+    <p class="pp-switcher-label">Read it in a different voice</p>
+    <div class="pp-pills" id="pills"></div>
+
+    <div class="pp-content visible" id="content">
+      <div class="pp-voice-badge" id="badge"></div>
+      <p class="pp-intro" id="intro"></p>
+      <div id="sections"></div>
+    </div>
+
+    <footer class="pp-footer">
+      <span class="pp-footer-logo">📝 GridPad</span>
+      <div class="pp-footer-links">
+        <a class="pp-footer-link" href="https://yourbroadideas.com" target="_blank" rel="noopener noreferrer">yourbroadideas.com</a>
+        <a class="pp-footer-link" href="https://gridpadsite.vercel.app" target="_blank" rel="noopener noreferrer">gridpadsite.vercel.app</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+const VOICES = [
+  { id: "standard", label: "Standard", emoji: "📄" },
+  { id: "pirate", label: "Pirate", emoji: "🏴‍☠️" },
+  { id: "philosopher", label: "Philosophy of Mind", emoji: "🧠" },
+  { id: "jeff", label: "Jeff Walker", emoji: "🚀" },
+  { id: "rogan", label: "Joe Rogan", emoji: "🎙️" },
+  { id: "grandma", label: "Your Grandma", emoji: "👵" },
+  { id: "noir", label: "Film Noir", emoji: "🕵️" },
+];
+
+const CONTENT = {
+  standard: {
+    intro: "GridPad (\u201Cthe App\u201D) is a note-taking application available on Android and iOS. Our website is gridpadsite.vercel.app. We are committed to protecting your privacy. This Privacy Policy explains what information the App collects (or, more accurately, does not collect), how your data is handled, and your rights.",
+    sections: [
+      { heading: "Our Core Principle: Privacy by Design", body: "GridPad is built on a fundamental principle: your notes are yours and yours alone. The App stores all data locally on your device. We do not operate servers that store, process, or transmit your personal data. We do not require you to create an account, and we do not collect, access, or share your notes or any personal information." },
+      { heading: "Information We Do Not Collect", body: "GridPad does not collect, store, transmit, or process any of the following: personal information (name, email, phone number, or other identifiers); account or login credentials; the content of your notes or cells; usage or analytics data; device identifiers, IP addresses, or location data; cookies, tracking pixels, or similar technologies." },
+      { heading: "Data Storage", body: "All data you create within GridPad \u2014 including the content of your 48 cells \u2014 is stored exclusively on your device using local storage. Your data never leaves your phone or tablet. There is no cloud syncing, no remote backup, and no server-side storage. If you uninstall the App or clear its data, your notes will be permanently deleted and cannot be recovered by us." },
+      { heading: "Third-Party Services", body: "GridPad does not integrate with or transmit data to any third-party analytics, advertising, or tracking services. The App does not display advertisements. It is distributed through the Apple App Store and Google Play Store, which may collect their own data per their respective privacy policies." },
+      { heading: "Children\u2019s Privacy", body: "GridPad does not knowingly collect any personal information from anyone, including children under the age of 13. Since the App does not collect any data whatsoever, it is safe for users of all ages." },
+      { heading: "Data Security", body: "Because GridPad does not collect or transmit any data, there is no risk of your data being exposed through our servers. Your notes are protected by whatever security measures you have on your device. We recommend using a strong passcode or biometric lock." },
+      { heading: "Changes to This Privacy Policy", body: "We may update this Privacy Policy from time to time. If we make changes, we will post the revised policy on our website and update the effective date. Your continued use of the App after changes constitutes acceptance of the updated policy." },
+      { heading: "Your Rights", body: "Since GridPad does not collect or store any personal data on our servers, there is no data for us to provide, correct, or delete. You have full control \u2014 your data lives on your device, and you can modify or delete it at any time." },
+      { heading: "Contact Us", body: "If you have questions about this Privacy Policy, visit yourbroadideas.com or gridpadsite.vercel.app." }
+    ]
+  },
+
+  pirate: {
+    intro: "Ahoy, ye scallywag! Welcome aboard the good ship GridPad \u2014 a note-keepin\u2019 vessel available on the Android and iOS seas. Our port of call be gridpadsite.vercel.app. Now sit yerself down and listen well, because this here Privacy Policy be explainin\u2019 how we handle yer precious cargo \u2014 which is to say, we don\u2019t touch it at all. Not one doubloon\u2019s worth.",
+    sections: [
+      { heading: "The Captain\u2019s Code: Yer Treasure Stays Buried", body: "Here be the law of this ship: what ye write be yers and yers alone. Every note, every scrawl, every secret map \u2014 it stays locked in yer own device like gold in a chest. We ain\u2019t got no servers lurkin\u2019 in the deep to steal yer words. We don\u2019t ask fer yer name, yer parrot\u2019s name, or any blasted account. Yer secrets be safe with ye, savvy?" },
+      { heading: "Plunder We Do NOT Take", body: "Listen here \u2014 Cap\u2019n GridPad and this crew don\u2019t plunder ANY of the followin\u2019: yer real name or letters of correspondence; any passwords or secret codes; what ye scribble in yer 48 cells; how often ye open the map; where yer ship be sailin\u2019; or any of them cursed tracking barnacles other ships use. We take NOTHING. The hold is empty. That\u2019s a pirate\u2019s promise." },
+      { heading: "Where Yer Treasure Be Stored", body: "Every last word ye write in GridPad \u2014 all 48 cells of it \u2014 stays buried right there on yer own device. It don\u2019t sail to no cloud. It don\u2019t get copied to no distant island. There be no syncing, no backup on some stranger\u2019s ship. If ye throw yer device overboard or scuttle the App, yer notes go down to Davy Jones\u2019 locker forever. We cannot fish \u2019em back. That be the way of it." },
+      { heading: "Other Ships in These Waters", body: "We don\u2019t trade yer cargo with any other vessels \u2014 no spy ships, no merchant advertisers, no trackin\u2019 frigates. Ye won\u2019t see no ads on this deck neither. Now, the Apple and Google harbors where ye picked up this app \u2014 they run their own operations, and ye\u2019d best read their own articles of agreement." },
+      { heading: "The Young Buccaneers", body: "We don\u2019t collect treasure from any soul, young or old. Little pirates under thirteen? They be just as safe aboard this ship as any grizzled sea dog. We take nothin\u2019 from nobody." },
+      { heading: "Guardin\u2019 the Ship", body: "Since we ain\u2019t holdin\u2019 any of yer cargo on our ship, there be nothin\u2019 for raiders to steal from us. Yer notes be protected by whatever locks ye got on yer own vessel. We recommend a strong padlock \u2014 or one of them fancy fingerprint enchantments." },
+      { heading: "Amendin\u2019 the Articles", body: "From time to time, we might rewrite these here articles. If we do, we\u2019ll post the new ones at our port and change the date at the top. If ye keep sailin\u2019 with us after that, it means ye agree to the new terms. Fair winds to ye." },
+      { heading: "Yer Rights as a Free Pirate", body: "Since we ain\u2019t holdin\u2019 any of yer data in our brig, there be nothin\u2019 for us to hand over, fix, or destroy. Ye be the captain of yer own data. Delete a cell, clear the grid, scuttle the whole App \u2014 it\u2019s all in yer hands, always." },
+      { heading: "Send a Message in a Bottle", body: "Got questions about these articles? Send word to yourbroadideas.com or sail on over to gridpadsite.vercel.app. We\u2019ll be waitin\u2019 at the helm." }
+    ]
+  },
+
+  philosopher: {
+    intro: "Consider, if you will, the nature of a note-taking application \u2014 GridPad \u2014 available on Android and iOS, residing at gridpadsite.vercel.app. What follows is not merely a legal document but a meditation on the relationship between mind, tool, and the boundaries of cognitive privacy. What does it mean for your thoughts to be truly yours? Let us examine.",
+    sections: [
+      { heading: "The Extended Mind and the Sanctity of Cognitive Privacy", body: "Clark and Chalmers (1998) argued that cognition extends beyond the skull \u2014 that a reliably consulted notebook is, in a meaningful sense, part of the mind itself. If we accept this thesis, then the privacy of your notes is not merely a data protection matter but a question of cognitive liberty. GridPad takes this position seriously. Your 48 cells are an extension of your thought. All data remains on your device. We operate no servers. We require no account. We observe nothing. To violate the privacy of your GridPad would be, philosophically speaking, to violate the privacy of your mind." },
+      { heading: "On the Absence of Observation", body: "There is something deeply Sartrean about being watched \u2014 the gaze of the Other transforms the subject into an object. Most applications impose precisely this objectifying gaze: they observe your behavior, quantify your patterns, reduce your rich inner life to analytics. GridPad refuses this entirely. We collect no personal identifiers, no credentials, no content from your cells, no behavioral data, no device fingerprints, no location data, and no tracking mechanisms. In a landscape of radical surveillance, GridPad offers radical opacity." },
+      { heading: "The Phenomenology of Local Storage", body: "Where does a thought live? For the phenomenologist, it is always already situated \u2014 embodied, embedded, enacted. Your 48 cells exist only on your device, in the local storage of your phone or tablet. They do not traverse networks. They do not replicate in distant data centers. There is no cloud, which is to say: there is no illusion of ethereal permanence. If you remove the App, the thoughts it held vanish \u2014 a reminder, perhaps, of the impermanence that Heidegger would say structures all authentic existence." },
+      { heading: "On the Question of Third Parties", body: "We introduce no intermediaries between you and your cognition. No analytics. No advertisers. No tracking apparatus. The Apple App Store and Google Play Store, through which GridPad is distributed, operate according to their own epistemic and commercial frameworks \u2014 we encourage you to examine those independently." },
+      { heading: "The Developing Mind", body: "The question of children\u2019s cognitive privacy is perhaps even more urgent than that of adults, for the developing mind is still constructing the very frameworks through which it will understand privacy itself. GridPad collects nothing from any user, regardless of age. The young mind is as protected here as any other." },
+      { heading: "Security as Non-Possession", body: "The most secure vault is the one that holds nothing. Since GridPad possesses none of your data on any external system, there exists no server to breach, no database to leak, no honeypot to attract the malicious. Your security is a function of your own device \u2014 its locks, its encryption, its biometric gates. We recommend you treat the boundary of your device as you would the boundary of your mind: with care." },
+      { heading: "The Impermanence of Policy", body: "No text is final \u2014 least of all a legal one. We may revise this document. When we do, we will update it at our website and adjust the date above. Your continued use constitutes a form of tacit consent \u2014 though the question of what constitutes genuine consent in digital spaces remains, as always, philosophically open." },
+      { heading: "On the Question of Rights", body: "You cannot request data we do not have. You cannot delete records that do not exist. In this sense, your rights here are not the rights of a data subject petitioning a controller \u2014 they are the rights of an autonomous agent in full possession of their own cognitive extensions. Your data is yours. It has only ever been yours." },
+      { heading: "Further Inquiry", body: "For those wishing to continue this dialogue, we can be reached through yourbroadideas.com or gridpadsite.vercel.app. The conversation, like cognition itself, is always ongoing." }
+    ]
+  },
+
+  jeff: {
+    intro: "Hey \u2014 let me walk you through this privacy policy the way I\u2019d walk you through a product launch. Because here\u2019s the thing: GridPad \u2014 available on Android, iOS, at gridpadsite.vercel.app \u2014 this app doesn\u2019t just protect your privacy. It LAUNCHES your privacy into a whole new category. Let me show you what I mean...",
+    sections: [
+      { heading: "The Big Promise (And We Actually Deliver)", body: "Here\u2019s the seed of everything: your notes are YOURS. Period. Full stop. I\u2019ve been in the online world a long time, and I\u2019ve seen what most apps do with your data. They harvest it. They sell it. They \u201Canonymize\u201D it (sure they do). GridPad? Everything stays on your device. No servers. No accounts. No data collection. NOTHING leaves your phone. That\u2019s not a marketing claim \u2014 that\u2019s the architecture. And when the architecture backs up the promise? That\u2019s when you know it\u2019s real." },
+      { heading: "What We Don\u2019t Take (This Is the Trigger)", body: "Pay attention here because this is the part that should trigger a shift in how you think about apps. GridPad collects ZERO: no names, no emails, no phone numbers, no account info, no note content, no usage data, no device IDs, no IP addresses, no location data, no cookies, no tracking. Nothing. Nada. And I know what you\u2019re thinking \u2014 \u201CCome on, every app says that.\u201D But most apps have a backend. Most apps have analytics dashboards. GridPad has neither. That\u2019s the differentiator." },
+      { heading: "Where Your Content Actually Lives (The Proof)", body: "All 48 cells \u2014 everything you type \u2014 lives on YOUR device. Local storage. That\u2019s it. No cloud sync. No remote backup. No \u201Cwe store an encrypted copy for your convenience.\u201D If you delete the app, your data is gone. We can\u2019t recover it because we never had it. This is the proof element: we\u2019re not asking you to trust us with your data. We\u2019re showing you we literally cannot access it." },
+      { heading: "Third Parties? Not in This Launch", body: "No analytics partners. No ad networks. No data brokers. We don\u2019t even have a tracking pixel on the app. The only third parties involved are the App Store and Google Play \u2014 and they have their own policies, which you should review. But once GridPad is on your device? It\u2019s a closed loop. Just you and your 48 cells." },
+      { heading: "Kids Are Safe Here (No Objections)", body: "You know what objection I hear most in the privacy space? \u201CWhat about kids?\u201D Here\u2019s our answer: we don\u2019t collect data from ANYONE. Kids, adults, grandparents \u2014 doesn\u2019t matter. Zero data collection means zero risk. Objection handled." },
+      { heading: "Security (The Guarantee)", body: "Here\u2019s the guarantee: because we hold none of your data, there is literally nothing to breach on our end. Your notes are as secure as your phone is. Use a passcode. Use Face ID. Use a fingerprint. That\u2019s your security layer \u2014 and it\u2019s the only one you need, because we\u2019re not a weak link in the chain. We\u2019re not even IN the chain." },
+      { heading: "Policy Updates (Staying Current)", body: "We might update this from time to time \u2014 that\u2019s normal. When we do, we\u2019ll post it on the website and update the date. If you keep using the app, you\u2019re good with the new terms. Simple." },
+      { heading: "Your Rights (You\u2019re in Control)", body: "Here\u2019s the beautiful thing: there\u2019s no data request to file. No \u201Cplease delete my data\u201D form. No 30-day waiting period. Because we don\u2019t HAVE your data. You want to delete something? Open the app and delete it. You want to erase everything? Uninstall. Done. YOU are in control. And isn\u2019t that the whole point?" },
+      { heading: "Let\u2019s Talk", body: "Questions? Reach out at yourbroadideas.com or gridpadsite.vercel.app. I\u2019m always happy to talk about what we\u2019re building here \u2014 because I believe in it. And when you believe in the product, the launch takes care of itself." }
+    ]
+  },
+
+  rogan: {
+    intro: "Dude. Okay. So GridPad \u2014 it\u2019s this note-taking app, right? Android, iOS, gridpadsite.vercel.app. And the wild thing about it is... it doesn\u2019t take ANY of your data. Like, none. Zero. And I know that sounds insane because every app is harvesting your data, but hear me out, this is actually a legit privacy policy. Pull that up, Jamie.",
+    sections: [
+      { heading: "The Core Thing \u2014 And This Is Crazy", body: "So here\u2019s what blows my mind about this app. Your notes? They stay on YOUR phone. That\u2019s it. There\u2019s no server somewhere in Virginia with your grocery list on it. There\u2019s no account to create. They don\u2019t know your name. They don\u2019t know your email. They literally cannot see what you type. It\u2019s like a notebook. An actual paper notebook. But on your phone. And nobody\u2019s reading over your shoulder. That\u2019s it. That\u2019s the whole thing. And it\u2019s kind of revolutionary that THAT is revolutionary, you know what I mean?" },
+      { heading: "What They Don\u2019t Collect \u2014 Which Is Everything", body: "Okay so, list time. GridPad does not collect: your name, your email, your phone number, any login stuff \u2014 because there IS no login \u2014 what you write in the app, how you use the app, your device info, your IP address, where you are, cookies... nothing. NOTHING. And I\u2019ve talked to so many cybersecurity people and they all say the same thing: most apps are just vacuuming up everything. GridPad is like the anti-vacuum. It\u2019s the opposite. It\u2019s pushing air OUT. Wait, that\u2019s a leaf blower. You know what I mean." },
+      { heading: "It\u2019s All On Your Phone, Bro", body: "Every single one of your 48 cells \u2014 and by the way, 48 is a great constraint, we should do a whole episode on constraints \u2014 all of it lives on your phone. Local storage. There\u2019s no cloud. There\u2019s no sync. You delete the app, it\u2019s gone. Like, gone-gone. They can\u2019t get it back because they never had it in the first place. That\u2019s how it should be. That\u2019s how ALL apps should be. But it\u2019s 2026 and we\u2019re still amazed when an app doesn\u2019t spy on us. Wild times, man." },
+      { heading: "Third-Party Stuff", body: "No analytics companies. No ad people. No tracking anything. The only third parties are the App Store and Google Play, and those are their own thing \u2014 you should look into those policies, honestly, it\u2019s a whole rabbit hole. But GridPad itself? Clean. No connections going out. It\u2019s like an off-grid cabin but for your notes." },
+      { heading: "Kids Using It", body: "Yeah, kids can use it. Because \u2014 and this is the whole point \u2014 the app doesn\u2019t collect ANYTHING from ANYONE. Doesn\u2019t matter if you\u2019re 8 or 80. There\u2019s nothing being taken. So there\u2019s nothing to worry about. It\u2019s actually kind of the safest app a kid could use, if you think about it." },
+      { heading: "Security \u2014 Or Why There\u2019s Nothing to Hack", body: "So here\u2019s what\u2019s hilarious about the security section. There IS no server to hack. There\u2019s no database of user data sitting somewhere for some hacker in a hoodie to break into. Your notes are as safe as your phone is. Use a good passcode. Use the fingerprint thing. Use Face ID. That\u2019s your security. GridPad doesn\u2019t even enter the equation because they have NOTHING. It\u2019s the most secure app by virtue of having nothing to secure. That\u2019s like a zen koan or something." },
+      { heading: "If This Policy Changes", body: "They might update this. That\u2019s fine. They\u2019ll put the new version on the website. If you keep using the app, you\u2019re cool with the update. Standard stuff. Nothing weird here." },
+      { heading: "Your Rights", body: "You can\u2019t ask them to delete your data because they don\u2019t have your data. You can\u2019t request a copy because there IS no copy. Everything is on your phone and you can do whatever you want with it. Delete it, keep it, throw your phone in a lake \u2014 your call. Total autonomy. That\u2019s beautiful, man." },
+      { heading: "Get in Touch", body: "Questions? Hit up yourbroadideas.com or gridpadsite.vercel.app. Good people over there. Anyway, that\u2019s the privacy policy. Let\u2019s get back to talking about chimps and sensory deprivation tanks. Just kidding. Kind of." }
+    ]
+  },
+
+  grandma: {
+    intro: "Oh hello, sweetheart! Come sit down, I want to explain something to you about this GridPad thing. It\u2019s a little note-taking app for your phone \u2014 works on those Android phones and the iPhones too. The website is gridpadsite.vercel.app, if you want to look it up. Now, I know \u201Cprivacy policy\u201D sounds very serious and legal, but really all you need to know is that this app is very safe and very simple. Let me tell you about it.",
+    sections: [
+      { heading: "The Most Important Thing, Dear", body: "Now listen, because this is the part that matters: whatever you write in GridPad stays right there on your phone. It doesn\u2019t go anywhere else. It doesn\u2019t go to some computer in California. Nobody at the company can read your notes. You don\u2019t need to make an account or give them your email or any of that nonsense. It\u2019s like writing in a little notebook you keep in your purse \u2014 nobody sees it but you. Isn\u2019t that nice?" },
+      { heading: "What They Don\u2019t Know About You (Which Is Everything)", body: "Here\u2019s what the nice people at GridPad do NOT know about you: your name, your email, your phone number, what you write in the app, how often you use it, where you are when you use it \u2014 nothing! They don\u2019t use any of those \u201Ccookies\u201D that the computer people are always talking about either. It\u2019s like they put up a little shop and said \u201Cwe don\u2019t want to know anything about our customers, we just want them to be happy.\u201D And honestly? More companies should be like that." },
+      { heading: "Where Your Notes Are Kept", body: "All your little notes \u2014 you get 48 boxes to put things in, which is plenty if you ask me \u2014 they all stay right on your phone. Not on the internet. Not on some \u201Ccloud\u201D (I never understood that word, it\u2019s just someone else\u2019s computer, you know). Just on your phone. Now, here\u2019s the one thing to remember: if you delete the app or get a new phone, your notes go with it. They can\u2019t get them back because they never had them. So don\u2019t delete it by accident, okay sweetie?" },
+      { heading: "No Funny Business With Other Companies", body: "Some apps let advertising companies look at what you\u2019re doing so they can show you ads for things. GridPad doesn\u2019t do any of that. No ads, no tracking, no sharing with other companies. The only other people involved are Apple and Google \u2014 the stores where you download the app from \u2014 and they have their own rules." },
+      { heading: "It\u2019s Safe for the Grandkids Too", body: "I know you might be wondering if it\u2019s safe for the little ones. It absolutely is! Since the app doesn\u2019t collect any information from anyone \u2014 not adults, not kids, nobody \u2014 there\u2019s nothing to worry about. Your grandkids can use it just fine." },
+      { heading: "Keeping Your Notes Safe", body: "Now, because everything is on your phone, you want to make sure your phone itself is secure. You know that code you type in to unlock it? Keep using that. Or that thing where it looks at your face? That\u2019s good too. As long as nobody can get into your phone, nobody can see your notes. Simple as that." },
+      { heading: "If They Change This", body: "They might update this policy someday \u2014 nothing to worry about, it\u2019s just what companies do. They\u2019ll put the new one on the website. If you keep using the app, that means you\u2019re okay with the changes. But honestly, sweetheart, the changes probably won\u2019t affect you one bit." },
+      { heading: "What You Can Do", body: "You\u2019re in charge of everything! You can change your notes, delete them, move them around \u2014 whatever you like. And because they don\u2019t have any of your information, there\u2019s nothing you need to ask them to delete. It\u2019s all right there in your hands. Literally." },
+      { heading: "If You Have Questions", body: "If you have any questions \u2014 and don\u2019t be shy! \u2014 you can visit yourbroadideas.com or gridpadsite.vercel.app. Or just ask one of the grandkids to help you look it up. Now, would you like some tea?" }
+    ]
+  },
+
+  noir: {
+    intro: "It was a dark night in the App Store. The kind of night where every download comes with a catch, where every \u201Cfree\u201D app charges you in data you didn\u2019t know you had. But GridPad? GridPad was different. Available on Android and iOS. Website at gridpadsite.vercel.app. No strings. No shadows. Just 48 cells and a clean conscience. Here\u2019s the privacy policy \u2014 read it slow, read it careful, like your data depends on it. Because out there? It does.",
+    sections: [
+      { heading: "The Code: What Stays in the Shadows, Stays Yours", body: "In this business, everybody wants a piece of you. Your name. Your habits. Your secrets. But GridPad plays it different. Everything you write stays on your device \u2014 locked up tight like a confession you\u2019ll never make. No servers. No accounts. No data collection. The dame at the front desk doesn\u2019t ask your name, doesn\u2019t take your coat, doesn\u2019t even look up when you walk in. She just lets you sit down and write. That\u2019s the code here. And the code is everything." },
+      { heading: "The Nothing File", body: "You wanna know what GridPad has on you? Pull up a chair, because here\u2019s the complete list: nothing. No name, no email, no phone number, no passwords, no cell content, no usage patterns, no device IDs, no IP addresses, no location pings, no cookies. The file on you is empty. A manila folder with nothing inside. Just the way it should be in this crooked digital town." },
+      { heading: "Where the Evidence Is Kept", body: "Your 48 cells \u2014 every word, every scrawled thought \u2014 they live on your device. Only your device. No cloud backup, no remote copy, no server in some basement humming with other people\u2019s secrets. If you wipe the app, the evidence disappears forever. We can\u2019t bring it back. We never had it. It\u2019s the perfect crime \u2014 except nobody committed one." },
+      { heading: "Third Parties \u2014 Or the Lack Thereof", body: "No analytics firms peering through the blinds. No ad networks following you down dark alleys. No data brokers buying your secrets in smoky back rooms. The only others in this story are Apple and Google \u2014 they run the storefronts, and they\u2019ve got their own operations. But once GridPad is on your phone, the door closes. And it stays closed." },
+      { heading: "The Kids Are Alright", body: "Some outfits don\u2019t care who they take from \u2014 kids, adults, it\u2019s all data to them. Not here. GridPad doesn\u2019t collect from anyone. The youngest kid with a phone and the oldest gumshoe in the precinct \u2014 both equally invisible to us. That\u2019s not policy. That\u2019s principle." },
+      { heading: "The Vault Nobody Can Crack", body: "Here\u2019s the twist that\u2019d make any hacker laugh and cry at the same time: there\u2019s no vault to crack. No server holding your data. No database to breach. The only thing standing between your notes and the outside world is the lock on your phone. Use a good one. A passcode. A fingerprint. Your face. Make it hard. Because your phone is the only vault in this story, and you\u2019re the only one with the key." },
+      { heading: "When the Story Changes", body: "Every story gets a rewrite eventually. If we update this policy, we\u2019ll post it on the website and change the date up top. You keep using the app, that means you\u2019ve read the new edition. Fair enough." },
+      { heading: "Your Rights in This Town", body: "There\u2019s no data to subpoena. No records to request. No files to expunge. Because we never collected a thing. You own your data, start to finish. You can change it, delete it, walk away clean. No loose ends. No trailing threads. Just you and your 48 cells." },
+      { heading: "Leave a Message", body: "If you\u2019ve got questions \u2014 the kind that keep you up at 3 AM staring at the ceiling fan \u2014 reach out at yourbroadideas.com or gridpadsite.vercel.app. We\u2019ll be here. The light\u2019s always on." }
+    ]
+  }
+};
+
+// --- Render ---
+let currentVoice = "standard";
+
+const pillsEl = document.getElementById("pills");
+const contentEl = document.getElementById("content");
+const badgeEl = document.getElementById("badge");
+const introEl = document.getElementById("intro");
+const sectionsEl = document.getElementById("sections");
+
+function renderPills() {
+  pillsEl.innerHTML = "";
+  VOICES.forEach(v => {
+    const btn = document.createElement("button");
+    btn.className = "pp-pill" + (v.id === currentVoice ? " active" : "");
+    btn.innerHTML = `<span>${v.emoji}</span>${v.label}`;
+    btn.addEventListener("click", () => switchVoice(v.id));
+    pillsEl.appendChild(btn);
+  });
+}
+
+function renderContent() {
+  const data = CONTENT[currentVoice];
+  const voiceObj = VOICES.find(v => v.id === currentVoice);
+
+  if (currentVoice !== "standard") {
+    badgeEl.textContent = "";
+    badgeEl.textContent = voiceObj.emoji + " Reading as: " + voiceObj.label;
+    badgeEl.classList.add("show");
+  } else {
+    badgeEl.classList.remove("show");
+  }
+
+  introEl.textContent = data.intro;
+
+  sectionsEl.innerHTML = "";
+  data.sections.forEach(s => {
+    const div = document.createElement("div");
+    div.className = "pp-section";
+    const h2 = document.createElement("h2");
+    h2.textContent = s.heading;
+    const p = document.createElement("p");
+    p.textContent = s.body;
+    div.appendChild(h2);
+    div.appendChild(p);
+    sectionsEl.appendChild(div);
+  });
+}
+
+function switchVoice(id) {
+  if (id === currentVoice) return;
+
+  contentEl.classList.remove("visible");
+  contentEl.classList.add("hidden");
+
+  setTimeout(() => {
+    currentVoice = id;
+    renderPills();
+    renderContent();
+    contentEl.classList.remove("hidden");
+    contentEl.classList.add("visible");
+  }, 280);
+}
+
+// Init
+renderPills();
+renderContent();
+</script>
+
+</body>
+</html>
