@@ -242,6 +242,7 @@
     border-radius: 16px;
     border: 1px solid var(--border-cell);
     overflow: hidden;
+    position: relative;
     box-shadow:
       0 0 0 1px rgba(255,255,255,0.03),
       0 20px 60px rgba(0,0,0,0.4),
@@ -319,6 +320,166 @@
 
   .demo-cell:hover {
     background: var(--bg-cell-hover);
+  }
+
+  .demo-cell.has-content {
+    cursor: pointer;
+  }
+
+  .grid-demo-hint {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .grid-demo-hint span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(74, 158, 255, 0.06);
+    border: 1px solid rgba(74, 158, 255, 0.12);
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+  }
+
+  .grid-demo-hint .hint-arrow {
+    color: var(--blue-dot);
+    font-size: 1rem;
+  }
+
+  /* ─── CELL OVERLAY ─── */
+  .cell-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .cell-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cell-overlay-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-cell);
+    flex-shrink: 0;
+  }
+
+  .cell-overlay-title {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-style: italic;
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+  }
+
+  .cell-overlay-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-cell);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    line-height: 1;
+  }
+
+  .cell-overlay-close:hover {
+    background: var(--bg-cell-hover);
+    color: var(--text-primary);
+  }
+
+  .cell-overlay-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.2rem;
+    background: var(--bg-deep);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 31px,
+      rgba(74, 158, 255, 0.04) 31px,
+      rgba(74, 158, 255, 0.04) 32px
+    );
+    position: relative;
+  }
+
+  .cell-overlay-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px;
+    bottom: 0;
+    width: 1px;
+    background: rgba(200, 100, 80, 0.15);
+  }
+
+  .cell-overlay-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.8rem;
+    margin-left: 30px;
+  }
+
+  .cell-overlay-block-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+
+  .cell-overlay-block-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .cell-overlay-footer {
+    padding: 0.7rem;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-cell);
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cell-overlay-edit {
+    padding: 0.45rem 1.8rem;
+    border-radius: 8px;
+    background: var(--bg-cell);
+    border: 1px solid var(--border-cell);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: default;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .demo-cell .blue-dot {
@@ -1089,6 +1250,25 @@
         <div class="demo-cell"></div>
         <div class="demo-cell"></div>
       </div>
+
+      <!-- Cell Overlay -->
+      <div class="cell-overlay" id="cellOverlay">
+        <div class="cell-overlay-header">
+          <div class="cell-overlay-title">
+            📝 <span id="cellOverlayTitle">Cell 1</span>
+          </div>
+          <button class="cell-overlay-close" id="cellOverlayClose">✕</button>
+        </div>
+        <div class="cell-overlay-body" id="cellOverlayBody">
+        </div>
+        <div class="cell-overlay-footer">
+          <div class="cell-overlay-edit">Edit</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="grid-demo-hint" id="demoHint">
+      <span><span class="hint-arrow">↑</span> click on a cell to open it</span>
     </div>
   </div>
 </section>
@@ -1335,6 +1515,62 @@
       const cols = parseInt(btn.textContent);
       demoGrid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
     });
+  });
+
+  // Cell overlay open/close
+  const cellOverlay = document.getElementById('cellOverlay');
+  const cellOverlayTitle = document.getElementById('cellOverlayTitle');
+  const cellOverlayBody = document.getElementById('cellOverlayBody');
+  const cellOverlayClose = document.getElementById('cellOverlayClose');
+  const demoHint = document.getElementById('demoHint');
+
+  const allCells = document.querySelectorAll('.demo-cell');
+
+  // Mark cells with content
+  allCells.forEach(cell => {
+    if (cell.querySelector('.cell-title')) {
+      cell.classList.add('has-content');
+    }
+  });
+
+  // Open cell
+  allCells.forEach((cell, index) => {
+    cell.addEventListener('click', () => {
+      if (!cell.classList.contains('has-content')) return;
+
+      const titleEl = cell.querySelector('.cell-title');
+      const subEl = cell.querySelector('.cell-sub');
+
+      cellOverlayTitle.textContent = 'Cell ' + (index + 1);
+
+      // Build content blocks
+      let html = '';
+      if (titleEl) {
+        html += `
+          <div class="cell-overlay-block">
+            <div class="cell-overlay-block-label">Text</div>
+            <div class="cell-overlay-block-text">${titleEl.textContent}</div>
+          </div>`;
+      }
+      if (subEl) {
+        html += `
+          <div class="cell-overlay-block">
+            <div class="cell-overlay-block-label">Text</div>
+            <div class="cell-overlay-block-text">${subEl.textContent}</div>
+          </div>`;
+      }
+      cellOverlayBody.innerHTML = html;
+
+      cellOverlay.classList.add('open');
+      demoHint.style.opacity = '0';
+    });
+  });
+
+  // Close cell
+  cellOverlayClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    cellOverlay.classList.remove('open');
+    demoHint.style.opacity = '';
   });
 
   // Smooth scroll for nav links
