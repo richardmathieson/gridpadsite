@@ -212,6 +212,17 @@
     }
     .pp-footer-link:hover { color: rgba(255,255,255,0.6); }
 
+    .pp-app-note {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 24px;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
     @media (max-width: 600px) {
       .pp-title { font-size: 30px; }
       .pp-container { padding: 40px 18px 80px; }
@@ -232,9 +243,13 @@
     <a class="pp-back" href="https://gridpad.net">← Back to site</a>
   </header>
 
+  <div class="pp-app-note">
+    If you got here from the GridPad app, just close this window to get back to GridPad 🐘
+  </div>
+
   <div class="pp-container">
     <h1 class="pp-title">Privacy Policy</h1>
-    <p class="pp-effective">Effective February 26, 2026</p>
+    <p class="pp-effective">Effective March 9, 2026</p>
 
     <p class="pp-switcher-label">Read it in a different voice</p>
     <div class="pp-pills" id="pills"></div>
@@ -263,6 +278,7 @@ const VOICES = [
   { id: "rogan", label: "Joe Rogan", emoji: "🎙️" },
   { id: "grandma", label: "Your Grandma", emoji: "👵" },
   { id: "noir", label: "Film Noir", emoji: "🕵️" },
+  { id: "dario", label: "Dario Amodei", emoji: "🤖" },
 ];
 
 const CONTENT = {
@@ -368,6 +384,21 @@ const CONTENT = {
       { heading: "When the Story Changes", body: "Every story gets a rewrite eventually. If we update this policy, we\u2019ll post it on the website and change the date up top. You keep using the app, that means you\u2019ve read the new edition. Fair enough." },
       { heading: "Your Rights in This Town", body: "There\u2019s no data to subpoena. No records to request. No files to expunge. Because we never collected a thing. You own your data, start to finish. You can change it, delete it, walk away clean. No loose ends. No trailing threads. Just you and your 48 cells." },
       { heading: "Leave a Message", body: "If you\u2019ve got questions \u2014 the kind that keep you up at 3 AM staring at the ceiling fan \u2014 reach out at yourbroadideas.com or gridpad.net. We\u2019ll be here. The light\u2019s always on." }
+    ]
+  },
+
+  dario: {
+    intro: "So I want to talk about GridPad \u2014 it\u2019s a note-taking app, available on Android and iOS at gridpad.net \u2014 and specifically about their privacy policy. And the reason I find this interesting is that it actually embodies something I think a lot about: the idea that the most responsible way to handle sensitive data is, in many cases, simply not to collect it in the first place. That\u2019s a principle we think about constantly in AI safety, and it\u2019s frankly refreshing to see it applied to something as straightforward as a notes app. Let me walk through the details.",
+    sections: [
+      { heading: "The Architecture of Restraint", body: "What I find compelling about GridPad is that this isn\u2019t just a policy choice \u2014 it\u2019s an architectural one. Your notes stay on your device. There are no servers. There are no accounts. There\u2019s no data pipeline. And I think that\u2019s really important, because in my experience, the strongest safety guarantees are the ones that are baked into the system design itself, not ones that rely on people consistently making the right judgment calls after the fact. GridPad can\u2019t misuse your data because GridPad never has your data. That\u2019s a meaningful distinction." },
+      { heading: "The Absence of Collection", body: "I want to be specific here because specificity matters. GridPad does not collect your name, your email, your phone number, your credentials, the content of your cells, your usage patterns, device identifiers, IP addresses, location data, or any tracking tokens. And I think there\u2019s a broader lesson in this: we\u2019ve gotten so accustomed to the idea that apps need to know everything about us that we\u2019ve forgotten to ask whether they actually need to know anything at all. In most cases, the answer is no. GridPad is honest about that." },
+      { heading: "Local-First as a Safety Property", body: "All 48 cells of content live exclusively on your device. No cloud sync, no remote storage, no backup on an external server. Now, the tradeoff is real \u2014 if you uninstall the app, your data is gone and cannot be recovered. But I\u2019d argue that\u2019s actually the correct tradeoff. It\u2019s the same principle we apply when thinking about AI systems: sometimes accepting a limitation is far preferable to introducing a capability that creates new risks. Local-only storage means there is no attack surface beyond the device itself." },
+      { heading: "On Third Parties and Supply Chains", body: "One of the things that keeps me up at night in AI is supply chain risk \u2014 the way capabilities and data flow through complex webs of third parties, often in ways that are very hard to audit. GridPad has essentially eliminated this problem by having no third-party integrations. No analytics services, no ad networks, no tracking infrastructure. The only external entities are the app stores themselves, which operate under their own policies. But from GridPad\u2019s side, the supply chain is empty. That\u2019s elegant." },
+      { heading: "Children and Vulnerable Users", body: "This is an area I care deeply about. When you\u2019re building technology, you have to think about who might be affected and whether they have the capacity to consent to the risks involved. GridPad sidesteps this problem entirely \u2014 because there is zero data collection, the app is equally safe for a child as it is for anyone else. There\u2019s no COPPA compliance issue because there\u2019s no data to comply about. That\u2019s the kind of solution I love: one where the safety property holds regardless of who the user is." },
+      { heading: "Security Through Non-Possession", body: "I spend a lot of time thinking about threat models, and GridPad\u2019s is fascinating because it\u2019s essentially empty on the server side. There\u2019s no database to breach. There\u2019s no API to exploit. There\u2019s no credentials store to compromise. The entire security boundary is the user\u2019s own device \u2014 its passcode, its biometrics, its encryption. And honestly, that\u2019s how more software should work. The best way to protect data from being stolen is to never centralize it in the first place." },
+      { heading: "Policy Evolution", body: "This privacy policy may be updated over time, and I think that\u2019s appropriate \u2014 any honest policy should be a living document that adapts as understanding deepens. Updates will be posted at the website with a revised date. Continued use implies acceptance. That\u2019s standard, and I think it\u2019s fair." },
+      { heading: "User Autonomy and Data Rights", body: "There\u2019s something I find almost philosophically satisfying about GridPad\u2019s approach to data rights: you can\u2019t request your data because there is no data to request. You can\u2019t ask for deletion because nothing was ever stored externally. Your data lives on your device, under your control, and you can do whatever you want with it. That is genuine user autonomy \u2014 not the performed version of it that most privacy policies describe, where you technically have rights but exercising them requires navigating a labyrinth of forms and waiting periods." },
+      { heading: "Reaching Out", body: "If you have questions about any of this \u2014 and I always encourage people to ask questions about privacy, it\u2019s too important not to \u2014 you can reach the team at yourbroadideas.com or gridpad.net. I think what they\u2019re doing here is a small but meaningful example of building technology responsibly, and I\u2019m glad it exists." }
     ]
   }
 };
