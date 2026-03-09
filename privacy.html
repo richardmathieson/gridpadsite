@@ -1,444 +1,1751 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — GridPad</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+<title>GridPad</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 
-    body {
-      min-height: 100vh;
-      background: #0a0a0a;
-      color: #e0e0e0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+  /* ═══════════════════════════════════════════
+     THEME 1: CREAM PAPER
+     ═══════════════════════════════════════════ */
+  [data-theme="cream"] {
+    --bg-deep: #e8e0ca;
+    --bg-surface: #f5f0e1;
+    --bg-card: #f5f0e1;
+    --bg-card-hover: #ede5d0;
+    --bg-elevated: #fff;
+    --border: #a8b8c4;
+    --border-light: #a8b8c4;
+    --border-focus: #2980b9;
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6c7d;
+    --text-muted: #8a9bab;
+    --accent-main: #2980b9;
+    --accent-main-dim: rgba(41, 128, 185, 0.08);
+    --accent-danger: #c0392b;
+    --accent-danger-dim: rgba(192, 57, 43, 0.06);
+    --accent-save: #2980b9;
+    --accent-save-hover: #2471a3;
+    --accent-tag: #2980b9;
+    --line-faint: rgba(209, 218, 224, 0.5);
+    --line-rule: #b8c4cc;
+    --shadow-soft: 0 2px 20px rgba(0,0,0,0.08);
+    --shadow-lift: 0 8px 40px rgba(0,0,0,0.15);
+    --glow-accent: none;
+    --glow-danger: none;
+    --overlay-bg: #f5f0e1;
+    --dialog-bg: #f5f0e1;
+    --dialog-backdrop: rgba(44, 62, 80, 0.4);
+    --input-bg: rgba(255,255,255,0.6);
+    --input-focus-bg: rgba(255,255,255,0.9);
+    --content-item-bg: rgba(255,255,255,0.5);
+    --scrollbar-thumb: #b8c4cc;
+    --scrollbar-hover: #8a9bab;
+    --red-line-opacity: 0.3;
+    --btn-primary-bg: #2c3e50;
+    --btn-primary-color: #f5f0e1;
+    --btn-primary-hover-bg: #2980b9;
+    --btn-primary-hover-border: #2980b9;
+    --paper-line-opacity: 0.5;
+    --cell-line-opacity: 0.6;
+    --overlay-line-opacity: 0.3;
+    --dot-glow: none;
+  }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse at 20% 0%, rgba(60, 60, 80, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 100%, rgba(40, 50, 60, 0.1) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  /* ═══════════════════════════════════════════
+     THEME 2: MIDNIGHT (dark GitHub)
+     ═══════════════════════════════════════════ */
+  [data-theme="midnight"] {
+    --bg-deep: #0d1117;
+    --bg-surface: #161b22;
+    --bg-card: #1c2129;
+    --bg-card-hover: #21262d;
+    --bg-elevated: #242a33;
+    --border: #30363d;
+    --border-light: #21262d;
+    --border-focus: #58a6ff;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-main: #58a6ff;
+    --accent-main-dim: rgba(88, 166, 255, 0.12);
+    --accent-danger: #f85149;
+    --accent-danger-dim: rgba(248, 81, 73, 0.12);
+    --accent-save: #58a6ff;
+    --accent-save-hover: #79b8ff;
+    --accent-tag: #bc8cff;
+    --line-faint: rgba(48, 54, 61, 0.5);
+    --line-rule: rgba(48, 54, 61, 0.8);
+    --shadow-soft: 0 2px 20px rgba(0,0,0,0.3);
+    --shadow-lift: 0 8px 40px rgba(0,0,0,0.5);
+    --glow-accent: 0 0 20px rgba(88, 166, 255, 0.15);
+    --glow-danger: 0 0 16px rgba(248, 81, 73, 0.15);
+    --overlay-bg: #0d1117;
+    --dialog-bg: #161b22;
+    --dialog-backdrop: rgba(0, 0, 0, 0.6);
+    --input-bg: #1c2129;
+    --input-focus-bg: #242a33;
+    --content-item-bg: #161b22;
+    --scrollbar-thumb: #30363d;
+    --scrollbar-hover: #484f58;
+    --red-line-opacity: 0.2;
+    --btn-primary-bg: #e6edf3;
+    --btn-primary-color: #0d1117;
+    --btn-primary-hover-bg: #58a6ff;
+    --btn-primary-hover-border: #58a6ff;
+    --paper-line-opacity: 0.4;
+    --cell-line-opacity: 0.4;
+    --overlay-line-opacity: 0.2;
+    --dot-glow: 0 0 8px rgba(88, 166, 255, 0.4);
+  }
 
-    .pp-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  /* ═══════════════════════════════════════════
+     THEME 3: DUSK (purple/warm)
+     ═══════════════════════════════════════════ */
+  [data-theme="dusk"] {
+    --bg-deep: #1a1525;
+    --bg-surface: #221c30;
+    --bg-card: #2a2339;
+    --bg-card-hover: #332b44;
+    --bg-elevated: #3a3150;
+    --border: #3e3555;
+    --border-light: #2f2841;
+    --border-focus: #e8976c;
+    --text-primary: #ede4f5;
+    --text-secondary: #a99bbe;
+    --text-muted: #6b5f80;
+    --accent-main: #e8976c;
+    --accent-main-dim: rgba(232, 151, 108, 0.12);
+    --accent-danger: #d4728c;
+    --accent-danger-dim: rgba(212, 114, 140, 0.12);
+    --accent-save: #e8976c;
+    --accent-save-hover: #eead8a;
+    --accent-tag: #e2b96e;
+    --line-faint: rgba(62, 53, 85, 0.5);
+    --line-rule: rgba(62, 53, 85, 0.8);
+    --shadow-soft: 0 2px 20px rgba(0,0,0,0.3);
+    --shadow-lift: 0 8px 40px rgba(0,0,0,0.5);
+    --glow-accent: 0 0 20px rgba(232, 151, 108, 0.15);
+    --glow-danger: 0 0 16px rgba(212, 114, 140, 0.15);
+    --overlay-bg: #1a1525;
+    --dialog-bg: #221c30;
+    --dialog-backdrop: rgba(0, 0, 0, 0.6);
+    --input-bg: #2a2339;
+    --input-focus-bg: #3a3150;
+    --content-item-bg: #221c30;
+    --scrollbar-thumb: #3e3555;
+    --scrollbar-hover: #6b5f80;
+    --red-line-opacity: 0.2;
+    --btn-primary-bg: #ede4f5;
+    --btn-primary-color: #1a1525;
+    --btn-primary-hover-bg: #e8976c;
+    --btn-primary-hover-border: #e8976c;
+    --paper-line-opacity: 0.4;
+    --cell-line-opacity: 0.4;
+    --overlay-line-opacity: 0.2;
+    --dot-glow: 0 0 8px rgba(232, 151, 108, 0.4);
+  }
 
-    .pp-logo {
-      font-family: 'DM Mono', monospace;
-      font-weight: 500;
-      font-size: 15px;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: -0.02em;
-    }
+  /* ═══════════════════════════════════════════
+     CORE STYLES (theme-agnostic)
+     ═══════════════════════════════════════════ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .pp-back {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .pp-back:hover { color: rgba(255,255,255,0.8); }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    transition: background 0.35s ease, color 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
 
-    .pp-container {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 60px 24px 120px;
-    }
+  /* ─── PAPER TEXTURE BG ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg, transparent, transparent 31px,
+        var(--line-faint) 31px, var(--line-faint) 32px
+      ),
+      repeating-linear-gradient(
+        90deg, transparent, transparent 31px,
+        var(--line-faint) 31px, var(--line-faint) 32px
+      );
+    opacity: var(--paper-line-opacity);
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.35s ease;
+  }
 
-    .pp-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
+  /* ─── TOP BAR ─── */
+  .top-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.15);
+    transition: background 0.35s, border-color 0.35s;
+  }
 
-    .pp-effective {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.02em;
-      margin-bottom: 48px;
-    }
+  .top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .pp-switcher-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 14px;
-    }
+  .top-bar h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    transition: color 0.35s;
+  }
 
-    .pp-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 56px;
-    }
+  .top-bar h1 span {
+    color: var(--accent-main);
+    transition: color 0.35s;
+  }
 
-    .pp-pill {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.5);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      user-select: none;
-      white-space: nowrap;
-      outline: none;
-    }
-    .pp-pill:hover {
-      border-color: rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.8);
-    }
-    .pp-pill.active {
-      border-color: rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-weight: 500;
-    }
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-    .pp-content {
-      transition: opacity 0.28s ease, transform 0.28s ease;
+  .grid-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .grid-controls label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.35s;
+    display: none;
+  }
+
+  .grid-size-btn {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-surface);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .grid-size-btn:hover, .grid-size-btn:active {
+    background: var(--accent-main);
+    color: var(--bg-deep);
+    border-color: var(--accent-main);
+    transform: translateY(-1px);
+    box-shadow: var(--glow-accent);
+  }
+
+  .grid-size-btn.active {
+    background: var(--text-primary);
+    color: var(--bg-deep);
+    border-color: var(--text-primary);
+  }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-surface);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+
+  .theme-toggle:hover, .theme-toggle:active {
+    border-color: var(--accent-main);
+    box-shadow: var(--glow-accent);
+    transform: translateY(-1px);
+  }
+
+  /* Theme picker dropdown - FIXED colors independent of theme */
+  .theme-picker {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    z-index: 50;
+    display: none;
+    overflow: hidden;
+    min-width: 180px;
+  }
+
+  .theme-picker.visible {
+    display: block;
+    animation: pickerDrop 0.2s ease;
+  }
+
+  @keyframes pickerDrop {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.1s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #374151;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .theme-option:hover, .theme-option:active {
+    background: #f3f4f6;
+  }
+
+  .theme-option.active {
+    font-weight: 500;
+    color: #2563eb;
+  }
+
+  .theme-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #d1d5db;
+    flex-shrink: 0;
+  }
+
+  .theme-option.active .theme-swatch {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  .swatch-cream { background: linear-gradient(135deg, #f5f0e1, #e8e0ca); }
+  .swatch-midnight { background: linear-gradient(135deg, #161b22, #0d1117); }
+  .swatch-dusk { background: linear-gradient(135deg, #2a2339, #1a1525); }
+
+  /* Privacy link in theme picker */
+  .theme-picker-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    text-align: center;
+  }
+
+  .privacy-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #9ca3af;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.15s;
+  }
+
+  .privacy-link:hover, .privacy-link:active {
+    color: #6b7280;
+    text-decoration: underline;
+  }
+
+  /* ─── GRID ─── */
+  .grid-container {
+    position: relative;
+    z-index: 1;
+    height: calc(100vh - 54px);
+    height: calc(100dvh - 54px);
+    overflow: auto;
+    padding: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .grid {
+    display: grid;
+    gap: 2px;
+    min-height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .grid-cell {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .grid-cell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg, transparent, transparent 23px,
+        var(--line-faint) 23px, var(--line-faint) 24px
+      );
+    opacity: var(--cell-line-opacity);
+    pointer-events: none;
+  }
+
+  .grid-cell:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-main);
+    box-shadow: var(--glow-accent);
+    transform: translateY(-1px);
+  }
+
+  .grid-cell:active {
+    transform: translateY(0);
+  }
+
+  .grid-cell.has-content {
+    border-color: var(--border);
+  }
+
+  .grid-cell.has-content::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    background: var(--accent-main);
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: var(--dot-glow);
+  }
+
+  .cell-preview {
+    position: relative;
+    z-index: 1;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+  }
+
+  .cell-preview-text {
+    color: var(--text-secondary);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-family: 'Caveat', cursive;
+    font-size: 13px;
+    transition: color 0.35s;
+  }
+
+  .cell-preview-url {
+    font-size: 9px;
+    color: var(--accent-main);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.35s;
+  }
+
+  .cell-preview-img {
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+
+  .cell-empty-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .grid-cell:hover .cell-empty-icon {
+    opacity: 0.5;
+  }
+
+  /* ─── FULLSCREEN OVERLAY ─── */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--overlay-bg);
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.25s ease, background 0.35s;
+  }
+
+  .overlay.visible {
+    display: flex;
+    opacity: 1;
+  }
+
+  .overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg, transparent, transparent 31px,
+        var(--line-rule) 31px, var(--line-rule) 32px
+      );
+    opacity: var(--overlay-line-opacity);
+    pointer-events: none;
+  }
+
+  .overlay::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 60px;
+    bottom: 20px;
+    width: 2px;
+    background: var(--accent-danger);
+    opacity: var(--red-line-opacity);
+    pointer-events: none;
+  }
+
+  .overlay-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    padding-top: max(16px, env(safe-area-inset-top, 16px));
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  .overlay-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .overlay-title {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.35s;
+  }
+
+  .overlay-notepad {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .close-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'IBM Plex Mono', monospace;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .close-btn:hover, .close-btn:active {
+    color: var(--accent-danger);
+    border-color: var(--accent-danger);
+    background: var(--accent-danger-dim);
+    box-shadow: var(--glow-danger);
+  }
+
+  .overlay-body {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ─── VIEW MODE ─── */
+  .view-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .content-item {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: var(--content-item-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    animation: slideUp 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  @keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content-item:nth-child(1) { animation-delay: 0.05s; }
+  .content-item:nth-child(2) { animation-delay: 0.1s; }
+  .content-item:nth-child(3) { animation-delay: 0.15s; }
+  .content-item:nth-child(4) { animation-delay: 0.2s; }
+  .content-item:nth-child(5) { animation-delay: 0.25s; }
+
+  .content-item-type {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+    transition: color 0.35s;
+  }
+
+  .content-item-text {
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    word-break: break-word;
+    transition: color 0.35s;
+  }
+
+  .content-item-url {
+    color: var(--accent-main);
+    font-size: 13px;
+    text-decoration: none;
+    word-break: break-all;
+    transition: color 0.15s;
+  }
+
+  .content-item-url:hover {
+    text-decoration: underline;
+  }
+
+  .content-item-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 6px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+  }
+
+  .empty-state-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+  }
+
+  .empty-state-text {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    transition: color 0.35s;
+  }
+
+  /* ─── ACTION BUTTONS ─── */
+  .overlay-footer {
+    position: relative;
+    z-index: 2;
+    padding: 12px 20px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    background: var(--bg-surface);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn:hover, .btn:active {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+    background: var(--bg-elevated);
+  }
+
+  .btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    border-color: var(--btn-primary-bg);
+  }
+
+  .btn-primary:hover, .btn-primary:active {
+    background: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-border);
+    color: var(--btn-primary-color);
+    box-shadow: var(--glow-accent);
+  }
+
+  .btn-danger {
+    color: var(--accent-danger);
+    border-color: var(--accent-danger);
+  }
+
+  .btn-danger:hover, .btn-danger:active {
+    background: var(--accent-danger);
+    color: white;
+    box-shadow: var(--glow-danger);
+  }
+
+  .btn-save {
+    background: var(--accent-save);
+    color: var(--bg-deep);
+    border-color: var(--accent-save);
+    font-weight: 500;
+  }
+
+  .btn-save:hover, .btn-save:active {
+    background: var(--accent-save-hover);
+    border-color: var(--accent-save-hover);
+    box-shadow: var(--glow-accent);
+  }
+
+  /* ─── EDIT MODE ─── */
+  .edit-form {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .edit-section {
+    margin-bottom: 20px;
+  }
+
+  .edit-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .edit-section-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.35s;
+  }
+
+  .add-item-btn {
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1.5px dashed var(--accent-main);
+    background: none;
+    color: var(--accent-main);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .add-item-btn:hover, .add-item-btn:active {
+    background: var(--accent-main-dim);
+    box-shadow: var(--glow-accent);
+  }
+
+  .edit-item {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+  }
+
+  .edit-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: all 0.15s;
+    resize: vertical;
+  }
+
+  .edit-input:focus {
+    outline: none;
+    border-color: var(--accent-main);
+    background: var(--input-focus-bg);
+    box-shadow: 0 0 0 3px var(--accent-main-dim);
+  }
+
+  .edit-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  textarea.edit-input {
+    min-height: 56px;
+  }
+
+  .remove-item-btn {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    margin-top: 4px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .remove-item-btn:hover, .remove-item-btn:active {
+    color: var(--accent-danger);
+    background: var(--accent-danger-dim);
+  }
+
+  /* ─── IMAGE UPLOAD UI ─── */
+  .image-edit-block {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .image-upload-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px dashed var(--accent-main);
+    border-radius: 6px;
+    background: var(--accent-main-dim);
+    color: var(--accent-main);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .image-upload-btn:hover, .image-upload-btn:active {
+    background: var(--accent-main);
+    color: var(--bg-deep);
+    border-style: solid;
+    box-shadow: var(--glow-accent);
+  }
+
+  .image-upload-btn .upload-icon {
+    font-size: 16px;
+  }
+
+  .image-thumb-preview {
+    margin-top: 8px;
+    position: relative;
+    display: none;
+  }
+
+  .image-thumb-preview.has-image {
+    display: block;
+  }
+
+  .image-thumb-preview img {
+    max-width: 100%;
+    max-height: 120px;
+    border-radius: 6px;
+    object-fit: contain;
+    display: block;
+    border: 1px solid var(--border-light);
+  }
+
+  .image-thumb-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: var(--accent-danger);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .image-thumb-remove:hover {
+    opacity: 1;
+  }
+
+  .image-url-toggle {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .image-url-toggle:hover, .image-url-toggle:active {
+    color: var(--accent-main);
+  }
+
+  .image-url-wrapper {
+    display: none;
+    margin-top: 6px;
+  }
+
+  .image-url-wrapper.visible {
+    display: block;
+  }
+
+  /* ─── STORAGE BAR ─── */
+  .storage-bar {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: var(--content-item-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  .storage-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .storage-track {
+    height: 6px;
+    background: var(--border-light);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .storage-fill {
+    height: 100%;
+    background: var(--accent-main);
+    border-radius: 3px;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .storage-fill.warning {
+    background: var(--accent-danger);
+  }
+
+  .storage-text {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ─── CONFIRM DIALOG ─── */
+  .dialog-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--dialog-backdrop);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dialog-backdrop.visible {
+    display: flex;
+  }
+
+  .dialog {
+    background: var(--dialog-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    max-width: 340px;
+    width: 90%;
+    box-shadow: var(--shadow-lift);
+    text-align: center;
+    animation: dialogPop 0.2s ease;
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  @keyframes dialogPop {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .dialog-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .dialog-text {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    line-height: 1.3;
+    transition: color 0.35s;
+  }
+
+  .dialog-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (min-width: 600px) {
+    .top-bar { padding: 12px 24px; }
+    .top-bar h1 { font-size: 32px; }
+    .grid-container { padding: 16px; }
+    .grid-controls label { display: block; }
+    .overlay-body { padding: 32px 48px; }
+    .overlay-header { padding: 16px 28px; }
+    .overlay-footer { padding: 16px 28px; }
+    .grid-cell { min-height: 80px; }
+  }
+
+  /* Safe areas for notched phones */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    .top-bar {
+      padding-top: max(10px, env(safe-area-inset-top));
     }
-    .pp-content.hidden { opacity: 0; transform: translateY(8px); }
-    .pp-content.visible { opacity: 1; transform: translateY(0); }
-
-    .pp-voice-badge {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 32px;
-      width: fit-content;
+    .grid-container {
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
     }
-    .pp-voice-badge.show { display: inline-flex; }
-
-    .pp-intro {
-      font-size: 17px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 56px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .pp-section { margin-bottom: 48px; }
-
-    .pp-section h2 {
-      font-size: 20px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    .pp-section p {
-      font-size: 15.5px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.55);
-    }
-
-    .pp-footer {
-      margin-top: 80px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .pp-footer-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      color: rgba(255,255,255,0.3);
-    }
-
-    .pp-footer-links { display: flex; gap: 20px; }
-
-    .pp-footer-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: rgba(255,255,255,0.25);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .pp-footer-link:hover { color: rgba(255,255,255,0.6); }
-
-    @media (max-width: 600px) {
-      .pp-title { font-size: 30px; }
-      .pp-container { padding: 40px 18px 80px; }
-      .pp-pill { padding: 7px 12px; font-size: 13px; }
-    }
-  </style>
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+  }
+</style>
 </head>
-<body>
+<body data-theme="cream">
 
-  <header class="pp-header">
-    <a class="pp-logo" href="https://gridpad.net">
-      <span>📝</span> GridPad
-    </a>
-    <a class="pp-back" href="https://gridpad.net">← Back to site</a>
-  </header>
+<!-- Hidden file input for image upload -->
+<input type="file" id="imageFileInput" accept="image/*" style="display:none">
 
-  <div class="pp-container">
-    <h1 class="pp-title">Privacy Policy</h1>
-    <p class="pp-effective">Effective February 26, 2026</p>
-
-    <p class="pp-switcher-label">Read it in a different voice</p>
-    <div class="pp-pills" id="pills"></div>
-
-    <div class="pp-content visible" id="content">
-      <div class="pp-voice-badge" id="badge"></div>
-      <p class="pp-intro" id="intro"></p>
-      <div id="sections"></div>
-    </div>
-
-    <footer class="pp-footer">
-      <span class="pp-footer-logo">📝 GridPad</span>
-      <div class="pp-footer-links">
-        <a class="pp-footer-link" href="https://yourbroadideas.com" target="_blank" rel="noopener noreferrer">yourbroadideas.com</a>
-        <a class="pp-footer-link" href="https://gridpad.net" target="_blank" rel="noopener noreferrer">gridpad.net</a>
-      </div>
-    </footer>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <h1>📝 Grid<span>Pad</span></h1>
   </div>
+  <div class="top-bar-right">
+    <div class="grid-controls">
+      <label>Grid</label>
+      <button class="grid-size-btn" data-cols="3" onclick="setGrid(3)">3</button>
+      <button class="grid-size-btn active" data-cols="4" onclick="setGrid(4)">4</button>
+      <button class="grid-size-btn" data-cols="5" onclick="setGrid(5)">5</button>
+      <button class="grid-size-btn" data-cols="6" onclick="setGrid(6)">6</button>
+    </div>
+    <div style="position:relative">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleThemePicker()">🎨</button>
+      <div class="theme-picker" id="themePicker">
+        <button class="theme-option active" data-theme="cream" onclick="setTheme('cream')">
+          <div class="theme-swatch swatch-cream"></div>
+          Cream Paper
+        </button>
+        <button class="theme-option" data-theme="midnight" onclick="setTheme('midnight')">
+          <div class="theme-swatch swatch-midnight"></div>
+          Midnight
+        </button>
+        <button class="theme-option" data-theme="dusk" onclick="setTheme('dusk')">
+          <div class="theme-swatch swatch-dusk"></div>
+          Dusk
+        </button>
+        <div class="theme-picker-footer">
+          <a class="privacy-link" href="https://gridpad.net/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-container">
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- FULLSCREEN OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="overlay-header">
+    <div class="overlay-header-left">
+      <span class="overlay-notepad">📝</span>
+      <span class="overlay-title" id="overlayTitle">Cell</span>
+    </div>
+    <button class="close-btn" onclick="handleClose()">✕</button>
+  </div>
+  <div class="overlay-body" id="overlayBody"></div>
+  <div class="overlay-footer" id="overlayFooter"></div>
+</div>
+
+<!-- CONFIRM DIALOG -->
+<div class="dialog-backdrop" id="dialogBackdrop">
+  <div class="dialog">
+    <div class="dialog-icon">🤔</div>
+    <div class="dialog-text">You have unsaved changes.<br>Save or discard?</div>
+    <div class="dialog-buttons">
+      <button class="btn btn-danger" onclick="discardChanges()">Discard</button>
+      <button class="btn btn-save" onclick="saveAndClose()">Save</button>
+    </div>
+  </div>
+</div>
 
 <script>
-const VOICES = [
-  { id: "standard", label: "Standard", emoji: "📄" },
-  { id: "pirate", label: "Pirate", emoji: "🏴‍☠️" },
-  { id: "philosopher", label: "Philosophy of Mind", emoji: "🧠" },
-  { id: "jeff", label: "Jeff Walker", emoji: "🚀" },
-  { id: "rogan", label: "Joe Rogan", emoji: "🎙️" },
-  { id: "grandma", label: "Your Grandma", emoji: "👵" },
-  { id: "noir", label: "Film Noir", emoji: "🕵️" },
-];
+  // ─── STATE ───
+  const TOTAL_CELLS = 48;
+  let gridCols = 4;
+  let currentCell = null;
+  let isEditing = false;
+  let editDirty = false;
+  let cellData = {};
+  let currentTheme = 'cream';
+  let activeImageIndex = null; // tracks which image slot the file input is for
 
-const CONTENT = {
-  standard: {
-    intro: "GridPad (\u201Cthe App\u201D) is a note-taking application available on Android and iOS. Our website is gridpad.net. We are committed to protecting your privacy. This Privacy Policy explains what information the App collects (or, more accurately, does not collect), how your data is handled, and your rights.",
-    sections: [
-      { heading: "Our Core Principle: Privacy by Design", body: "GridPad is built on a fundamental principle: your notes are yours and yours alone. The App stores all data locally on your device. We do not operate servers that store, process, or transmit your personal data. We do not require you to create an account, and we do not collect, access, or share your notes or any personal information." },
-      { heading: "Information We Do Not Collect", body: "GridPad does not collect, store, transmit, or process any of the following: personal information (name, email, phone number, or other identifiers); account or login credentials; the content of your notes or cells; usage or analytics data; device identifiers, IP addresses, or location data; cookies, tracking pixels, or similar technologies." },
-      { heading: "Data Storage", body: "All data you create within GridPad \u2014 including the content of your 48 cells \u2014 is stored exclusively on your device using local storage. Your data never leaves your phone or tablet. There is no cloud syncing, no remote backup, and no server-side storage. If you uninstall the App or clear its data, your notes will be permanently deleted and cannot be recovered by us." },
-      { heading: "Third-Party Services", body: "GridPad does not integrate with or transmit data to any third-party analytics, advertising, or tracking services. The App does not display advertisements. It is distributed through the Apple App Store and Google Play Store, which may collect their own data per their respective privacy policies." },
-      { heading: "Children\u2019s Privacy", body: "GridPad does not knowingly collect any personal information from anyone, including children under the age of 13. Since the App does not collect any data whatsoever, it is safe for users of all ages." },
-      { heading: "Data Security", body: "Because GridPad does not collect or transmit any data, there is no risk of your data being exposed through our servers. Your notes are protected by whatever security measures you have on your device. We recommend using a strong passcode or biometric lock." },
-      { heading: "Changes to This Privacy Policy", body: "We may update this Privacy Policy from time to time. If we make changes, we will post the revised policy on our website and update the effective date. Your continued use of the App after changes constitutes acceptance of the updated policy." },
-      { heading: "Your Rights", body: "Since GridPad does not collect or store any personal data on our servers, there is no data for us to provide, correct, or delete. You have full control \u2014 your data lives on your device, and you can modify or delete it at any time." },
-      { heading: "Contact Us", body: "If you have questions about this Privacy Policy, visit yourbroadideas.com or gridpad.net." }
-    ]
-  },
-
-  pirate: {
-    intro: "Ahoy, ye scallywag! Welcome aboard the good ship GridPad \u2014 a note-keepin\u2019 vessel available on the Android and iOS seas. Our port of call be gridpad.net. Now sit yerself down and listen well, because this here Privacy Policy be explainin\u2019 how we handle yer precious cargo \u2014 which is to say, we don\u2019t touch it at all. Not one doubloon\u2019s worth.",
-    sections: [
-      { heading: "The Captain\u2019s Code: Yer Treasure Stays Buried", body: "Here be the law of this ship: what ye write be yers and yers alone. Every note, every scrawl, every secret map \u2014 it stays locked in yer own device like gold in a chest. We ain\u2019t got no servers lurkin\u2019 in the deep to steal yer words. We don\u2019t ask fer yer name, yer parrot\u2019s name, or any blasted account. Yer secrets be safe with ye, savvy?" },
-      { heading: "Plunder We Do NOT Take", body: "Listen here \u2014 Cap\u2019n GridPad and this crew don\u2019t plunder ANY of the followin\u2019: yer real name or letters of correspondence; any passwords or secret codes; what ye scribble in yer 48 cells; how often ye open the map; where yer ship be sailin\u2019; or any of them cursed tracking barnacles other ships use. We take NOTHING. The hold is empty. That\u2019s a pirate\u2019s promise." },
-      { heading: "Where Yer Treasure Be Stored", body: "Every last word ye write in GridPad \u2014 all 48 cells of it \u2014 stays buried right there on yer own device. It don\u2019t sail to no cloud. It don\u2019t get copied to no distant island. There be no syncing, no backup on some stranger\u2019s ship. If ye throw yer device overboard or scuttle the App, yer notes go down to Davy Jones\u2019 locker forever. We cannot fish \u2019em back. That be the way of it." },
-      { heading: "Other Ships in These Waters", body: "We don\u2019t trade yer cargo with any other vessels \u2014 no spy ships, no merchant advertisers, no trackin\u2019 frigates. Ye won\u2019t see no ads on this deck neither. Now, the Apple and Google harbors where ye picked up this app \u2014 they run their own operations, and ye\u2019d best read their own articles of agreement." },
-      { heading: "The Young Buccaneers", body: "We don\u2019t collect treasure from any soul, young or old. Little pirates under thirteen? They be just as safe aboard this ship as any grizzled sea dog. We take nothin\u2019 from nobody." },
-      { heading: "Guardin\u2019 the Ship", body: "Since we ain\u2019t holdin\u2019 any of yer cargo on our ship, there be nothin\u2019 for raiders to steal from us. Yer notes be protected by whatever locks ye got on yer own vessel. We recommend a strong padlock \u2014 or one of them fancy fingerprint enchantments." },
-      { heading: "Amendin\u2019 the Articles", body: "From time to time, we might rewrite these here articles. If we do, we\u2019ll post the new ones at our port and change the date at the top. If ye keep sailin\u2019 with us after that, it means ye agree to the new terms. Fair winds to ye." },
-      { heading: "Yer Rights as a Free Pirate", body: "Since we ain\u2019t holdin\u2019 any of yer data in our brig, there be nothin\u2019 for us to hand over, fix, or destroy. Ye be the captain of yer own data. Delete a cell, clear the grid, scuttle the whole App \u2014 it\u2019s all in yer hands, always." },
-      { heading: "Send a Message in a Bottle", body: "Got questions about these articles? Send word to yourbroadideas.com or sail on over to gridpad.net. We\u2019ll be waitin\u2019 at the helm." }
-    ]
-  },
-
-  philosopher: {
-    intro: "Consider, if you will, the nature of a note-taking application \u2014 GridPad \u2014 available on Android and iOS, residing at gridpad.net. What follows is not merely a legal document but a meditation on the relationship between mind, tool, and the boundaries of cognitive privacy. What does it mean for your thoughts to be truly yours? Let us examine.",
-    sections: [
-      { heading: "The Extended Mind and the Sanctity of Cognitive Privacy", body: "Clark and Chalmers (1998) argued that cognition extends beyond the skull \u2014 that a reliably consulted notebook is, in a meaningful sense, part of the mind itself. If we accept this thesis, then the privacy of your notes is not merely a data protection matter but a question of cognitive liberty. GridPad takes this position seriously. Your 48 cells are an extension of your thought. All data remains on your device. We operate no servers. We require no account. We observe nothing. To violate the privacy of your GridPad would be, philosophically speaking, to violate the privacy of your mind." },
-      { heading: "On the Absence of Observation", body: "There is something deeply Sartrean about being watched \u2014 the gaze of the Other transforms the subject into an object. Most applications impose precisely this objectifying gaze: they observe your behavior, quantify your patterns, reduce your rich inner life to analytics. GridPad refuses this entirely. We collect no personal identifiers, no credentials, no content from your cells, no behavioral data, no device fingerprints, no location data, and no tracking mechanisms. In a landscape of radical surveillance, GridPad offers radical opacity." },
-      { heading: "The Phenomenology of Local Storage", body: "Where does a thought live? For the phenomenologist, it is always already situated \u2014 embodied, embedded, enacted. Your 48 cells exist only on your device, in the local storage of your phone or tablet. They do not traverse networks. They do not replicate in distant data centers. There is no cloud, which is to say: there is no illusion of ethereal permanence. If you remove the App, the thoughts it held vanish \u2014 a reminder, perhaps, of the impermanence that Heidegger would say structures all authentic existence." },
-      { heading: "On the Question of Third Parties", body: "We introduce no intermediaries between you and your cognition. No analytics. No advertisers. No tracking apparatus. The Apple App Store and Google Play Store, through which GridPad is distributed, operate according to their own epistemic and commercial frameworks \u2014 we encourage you to examine those independently." },
-      { heading: "The Developing Mind", body: "The question of children\u2019s cognitive privacy is perhaps even more urgent than that of adults, for the developing mind is still constructing the very frameworks through which it will understand privacy itself. GridPad collects nothing from any user, regardless of age. The young mind is as protected here as any other." },
-      { heading: "Security as Non-Possession", body: "The most secure vault is the one that holds nothing. Since GridPad possesses none of your data on any external system, there exists no server to breach, no database to leak, no honeypot to attract the malicious. Your security is a function of your own device \u2014 its locks, its encryption, its biometric gates. We recommend you treat the boundary of your device as you would the boundary of your mind: with care." },
-      { heading: "The Impermanence of Policy", body: "No text is final \u2014 least of all a legal one. We may revise this document. When we do, we will update it at our website and adjust the date above. Your continued use constitutes a form of tacit consent \u2014 though the question of what constitutes genuine consent in digital spaces remains, as always, philosophically open." },
-      { heading: "On the Question of Rights", body: "You cannot request data we do not have. You cannot delete records that do not exist. In this sense, your rights here are not the rights of a data subject petitioning a controller \u2014 they are the rights of an autonomous agent in full possession of their own cognitive extensions. Your data is yours. It has only ever been yours." },
-      { heading: "Further Inquiry", body: "For those wishing to continue this dialogue, we can be reached through yourbroadideas.com or gridpad.net. The conversation, like cognition itself, is always ongoing." }
-    ]
-  },
-
-  jeff: {
-    intro: "Hey \u2014 let me walk you through this privacy policy the way I\u2019d walk you through a product launch. Because here\u2019s the thing: GridPad \u2014 available on Android, iOS, at gridpad.net \u2014 this app doesn\u2019t just protect your privacy. It LAUNCHES your privacy into a whole new category. Let me show you what I mean...",
-    sections: [
-      { heading: "The Big Promise (And We Actually Deliver)", body: "Here\u2019s the seed of everything: your notes are YOURS. Period. Full stop. I\u2019ve been in the online world a long time, and I\u2019ve seen what most apps do with your data. They harvest it. They sell it. They \u201Canonymize\u201D it (sure they do). GridPad? Everything stays on your device. No servers. No accounts. No data collection. NOTHING leaves your phone. That\u2019s not a marketing claim \u2014 that\u2019s the architecture. And when the architecture backs up the promise? That\u2019s when you know it\u2019s real." },
-      { heading: "What We Don\u2019t Take (This Is the Trigger)", body: "Pay attention here because this is the part that should trigger a shift in how you think about apps. GridPad collects ZERO: no names, no emails, no phone numbers, no account info, no note content, no usage data, no device IDs, no IP addresses, no location data, no cookies, no tracking. Nothing. Nada. And I know what you\u2019re thinking \u2014 \u201CCome on, every app says that.\u201D But most apps have a backend. Most apps have analytics dashboards. GridPad has neither. That\u2019s the differentiator." },
-      { heading: "Where Your Content Actually Lives (The Proof)", body: "All 48 cells \u2014 everything you type \u2014 lives on YOUR device. Local storage. That\u2019s it. No cloud sync. No remote backup. No \u201Cwe store an encrypted copy for your convenience.\u201D If you delete the app, your data is gone. We can\u2019t recover it because we never had it. This is the proof element: we\u2019re not asking you to trust us with your data. We\u2019re showing you we literally cannot access it." },
-      { heading: "Third Parties? Not in This Launch", body: "No analytics partners. No ad networks. No data brokers. We don\u2019t even have a tracking pixel on the app. The only third parties involved are the App Store and Google Play \u2014 and they have their own policies, which you should review. But once GridPad is on your device? It\u2019s a closed loop. Just you and your 48 cells." },
-      { heading: "Kids Are Safe Here (No Objections)", body: "You know what objection I hear most in the privacy space? \u201CWhat about kids?\u201D Here\u2019s our answer: we don\u2019t collect data from ANYONE. Kids, adults, grandparents \u2014 doesn\u2019t matter. Zero data collection means zero risk. Objection handled." },
-      { heading: "Security (The Guarantee)", body: "Here\u2019s the guarantee: because we hold none of your data, there is literally nothing to breach on our end. Your notes are as secure as your phone is. Use a passcode. Use Face ID. Use a fingerprint. That\u2019s your security layer \u2014 and it\u2019s the only one you need, because we\u2019re not a weak link in the chain. We\u2019re not even IN the chain." },
-      { heading: "Policy Updates (Staying Current)", body: "We might update this from time to time \u2014 that\u2019s normal. When we do, we\u2019ll post it on the website and update the date. If you keep using the app, you\u2019re good with the new terms. Simple." },
-      { heading: "Your Rights (You\u2019re in Control)", body: "Here\u2019s the beautiful thing: there\u2019s no data request to file. No \u201Cplease delete my data\u201D form. No 30-day waiting period. Because we don\u2019t HAVE your data. You want to delete something? Open the app and delete it. You want to erase everything? Uninstall. Done. YOU are in control. And isn\u2019t that the whole point?" },
-      { heading: "Let\u2019s Talk", body: "Questions? Reach out at yourbroadideas.com or gridpad.net. I\u2019m always happy to talk about what we\u2019re building here \u2014 because I believe in it. And when you believe in the product, the launch takes care of itself." }
-    ]
-  },
-
-  rogan: {
-    intro: "Dude. Okay. So GridPad \u2014 it\u2019s this note-taking app, right? Android, iOS, gridpad.net. And the wild thing about it is... it doesn\u2019t take ANY of your data. Like, none. Zero. And I know that sounds insane because every app is harvesting your data, but hear me out, this is actually a legit privacy policy. Pull that up, Jamie.",
-    sections: [
-      { heading: "The Core Thing \u2014 And This Is Crazy", body: "So here\u2019s what blows my mind about this app. Your notes? They stay on YOUR phone. That\u2019s it. There\u2019s no server somewhere in Virginia with your grocery list on it. There\u2019s no account to create. They don\u2019t know your name. They don\u2019t know your email. They literally cannot see what you type. It\u2019s like a notebook. An actual paper notebook. But on your phone. And nobody\u2019s reading over your shoulder. That\u2019s it. That\u2019s the whole thing. And it\u2019s kind of revolutionary that THAT is revolutionary, you know what I mean?" },
-      { heading: "What They Don\u2019t Collect \u2014 Which Is Everything", body: "Okay so, list time. GridPad does not collect: your name, your email, your phone number, any login stuff \u2014 because there IS no login \u2014 what you write in the app, how you use the app, your device info, your IP address, where you are, cookies... nothing. NOTHING. And I\u2019ve talked to so many cybersecurity people and they all say the same thing: most apps are just vacuuming up everything. GridPad is like the anti-vacuum. It\u2019s the opposite. It\u2019s pushing air OUT. Wait, that\u2019s a leaf blower. You know what I mean." },
-      { heading: "It\u2019s All On Your Phone, Bro", body: "Every single one of your 48 cells \u2014 and by the way, 48 is a great constraint, we should do a whole episode on constraints \u2014 all of it lives on your phone. Local storage. There\u2019s no cloud. There\u2019s no sync. You delete the app, it\u2019s gone. Like, gone-gone. They can\u2019t get it back because they never had it in the first place. That\u2019s how it should be. That\u2019s how ALL apps should be. But it\u2019s 2026 and we\u2019re still amazed when an app doesn\u2019t spy on us. Wild times, man." },
-      { heading: "Third-Party Stuff", body: "No analytics companies. No ad people. No tracking anything. The only third parties are the App Store and Google Play, and those are their own thing \u2014 you should look into those policies, honestly, it\u2019s a whole rabbit hole. But GridPad itself? Clean. No connections going out. It\u2019s like an off-grid cabin but for your notes." },
-      { heading: "Kids Using It", body: "Yeah, kids can use it. Because \u2014 and this is the whole point \u2014 the app doesn\u2019t collect ANYTHING from ANYONE. Doesn\u2019t matter if you\u2019re 8 or 80. There\u2019s nothing being taken. So there\u2019s nothing to worry about. It\u2019s actually kind of the safest app a kid could use, if you think about it." },
-      { heading: "Security \u2014 Or Why There\u2019s Nothing to Hack", body: "So here\u2019s what\u2019s hilarious about the security section. There IS no server to hack. There\u2019s no database of user data sitting somewhere for some hacker in a hoodie to break into. Your notes are as safe as your phone is. Use a good passcode. Use the fingerprint thing. Use Face ID. That\u2019s your security. GridPad doesn\u2019t even enter the equation because they have NOTHING. It\u2019s the most secure app by virtue of having nothing to secure. That\u2019s like a zen koan or something." },
-      { heading: "If This Policy Changes", body: "They might update this. That\u2019s fine. They\u2019ll put the new version on the website. If you keep using the app, you\u2019re cool with the update. Standard stuff. Nothing weird here." },
-      { heading: "Your Rights", body: "You can\u2019t ask them to delete your data because they don\u2019t have your data. You can\u2019t request a copy because there IS no copy. Everything is on your phone and you can do whatever you want with it. Delete it, keep it, throw your phone in a lake \u2014 your call. Total autonomy. That\u2019s beautiful, man." },
-      { heading: "Get in Touch", body: "Questions? Hit up yourbroadideas.com or gridpad.net. Good people over there. Anyway, that\u2019s the privacy policy. Let\u2019s get back to talking about chimps and sensory deprivation tanks. Just kidding. Kind of." }
-    ]
-  },
-
-  grandma: {
-    intro: "Oh hello, sweetheart! Come sit down, I want to explain something to you about this GridPad thing. It\u2019s a little note-taking app for your phone \u2014 works on those Android phones and the iPhones too. The website is gridpad.net, if you want to look it up. Now, I know \u201Cprivacy policy\u201D sounds very serious and legal, but really all you need to know is that this app is very safe and very simple. Let me tell you about it.",
-    sections: [
-      { heading: "The Most Important Thing, Dear", body: "Now listen, because this is the part that matters: whatever you write in GridPad stays right there on your phone. It doesn\u2019t go anywhere else. It doesn\u2019t go to some computer in California. Nobody at the company can read your notes. You don\u2019t need to make an account or give them your email or any of that nonsense. It\u2019s like writing in a little notebook you keep in your purse \u2014 nobody sees it but you. Isn\u2019t that nice?" },
-      { heading: "What They Don\u2019t Know About You (Which Is Everything)", body: "Here\u2019s what the nice people at GridPad do NOT know about you: your name, your email, your phone number, what you write in the app, how often you use it, where you are when you use it \u2014 nothing! They don\u2019t use any of those \u201Ccookies\u201D that the computer people are always talking about either. It\u2019s like they put up a little shop and said \u201Cwe don\u2019t want to know anything about our customers, we just want them to be happy.\u201D And honestly? More companies should be like that." },
-      { heading: "Where Your Notes Are Kept", body: "All your little notes \u2014 you get 48 boxes to put things in, which is plenty if you ask me \u2014 they all stay right on your phone. Not on the internet. Not on some \u201Ccloud\u201D (I never understood that word, it\u2019s just someone else\u2019s computer, you know). Just on your phone. Now, here\u2019s the one thing to remember: if you delete the app or get a new phone, your notes go with it. They can\u2019t get them back because they never had them. So don\u2019t delete it by accident, okay sweetie?" },
-      { heading: "No Funny Business With Other Companies", body: "Some apps let advertising companies look at what you\u2019re doing so they can show you ads for things. GridPad doesn\u2019t do any of that. No ads, no tracking, no sharing with other companies. The only other people involved are Apple and Google \u2014 the stores where you download the app from \u2014 and they have their own rules." },
-      { heading: "It\u2019s Safe for the Grandkids Too", body: "I know you might be wondering if it\u2019s safe for the little ones. It absolutely is! Since the app doesn\u2019t collect any information from anyone \u2014 not adults, not kids, nobody \u2014 there\u2019s nothing to worry about. Your grandkids can use it just fine." },
-      { heading: "Keeping Your Notes Safe", body: "Now, because everything is on your phone, you want to make sure your phone itself is secure. You know that code you type in to unlock it? Keep using that. Or that thing where it looks at your face? That\u2019s good too. As long as nobody can get into your phone, nobody can see your notes. Simple as that." },
-      { heading: "If They Change This", body: "They might update this policy someday \u2014 nothing to worry about, it\u2019s just what companies do. They\u2019ll put the new one on the website. If you keep using the app, that means you\u2019re okay with the changes. But honestly, sweetheart, the changes probably won\u2019t affect you one bit." },
-      { heading: "What You Can Do", body: "You\u2019re in charge of everything! You can change your notes, delete them, move them around \u2014 whatever you like. And because they don\u2019t have any of your information, there\u2019s nothing you need to ask them to delete. It\u2019s all right there in your hands. Literally." },
-      { heading: "If You Have Questions", body: "If you have any questions \u2014 and don\u2019t be shy! \u2014 you can visit yourbroadideas.com or gridpad.net. Or just ask one of the grandkids to help you look it up. Now, would you like some tea?" }
-    ]
-  },
-
-  noir: {
-    intro: "It was a dark night in the App Store. The kind of night where every download comes with a catch, where every \u201Cfree\u201D app charges you in data you didn\u2019t know you had. But GridPad? GridPad was different. Available on Android and iOS. Website at gridpad.net. No strings. No shadows. Just 48 cells and a clean conscience. Here\u2019s the privacy policy \u2014 read it slow, read it careful, like your data depends on it. Because out there? It does.",
-    sections: [
-      { heading: "The Code: What Stays in the Shadows, Stays Yours", body: "In this business, everybody wants a piece of you. Your name. Your habits. Your secrets. But GridPad plays it different. Everything you write stays on your device \u2014 locked up tight like a confession you\u2019ll never make. No servers. No accounts. No data collection. The dame at the front desk doesn\u2019t ask your name, doesn\u2019t take your coat, doesn\u2019t even look up when you walk in. She just lets you sit down and write. That\u2019s the code here. And the code is everything." },
-      { heading: "The Nothing File", body: "You wanna know what GridPad has on you? Pull up a chair, because here\u2019s the complete list: nothing. No name, no email, no phone number, no passwords, no cell content, no usage patterns, no device IDs, no IP addresses, no location pings, no cookies. The file on you is empty. A manila folder with nothing inside. Just the way it should be in this crooked digital town." },
-      { heading: "Where the Evidence Is Kept", body: "Your 48 cells \u2014 every word, every scrawled thought \u2014 they live on your device. Only your device. No cloud backup, no remote copy, no server in some basement humming with other people\u2019s secrets. If you wipe the app, the evidence disappears forever. We can\u2019t bring it back. We never had it. It\u2019s the perfect crime \u2014 except nobody committed one." },
-      { heading: "Third Parties \u2014 Or the Lack Thereof", body: "No analytics firms peering through the blinds. No ad networks following you down dark alleys. No data brokers buying your secrets in smoky back rooms. The only others in this story are Apple and Google \u2014 they run the storefronts, and they\u2019ve got their own operations. But once GridPad is on your phone, the door closes. And it stays closed." },
-      { heading: "The Kids Are Alright", body: "Some outfits don\u2019t care who they take from \u2014 kids, adults, it\u2019s all data to them. Not here. GridPad doesn\u2019t collect from anyone. The youngest kid with a phone and the oldest gumshoe in the precinct \u2014 both equally invisible to us. That\u2019s not policy. That\u2019s principle." },
-      { heading: "The Vault Nobody Can Crack", body: "Here\u2019s the twist that\u2019d make any hacker laugh and cry at the same time: there\u2019s no vault to crack. No server holding your data. No database to breach. The only thing standing between your notes and the outside world is the lock on your phone. Use a good one. A passcode. A fingerprint. Your face. Make it hard. Because your phone is the only vault in this story, and you\u2019re the only one with the key." },
-      { heading: "When the Story Changes", body: "Every story gets a rewrite eventually. If we update this policy, we\u2019ll post it on the website and change the date up top. You keep using the app, that means you\u2019ve read the new edition. Fair enough." },
-      { heading: "Your Rights in This Town", body: "There\u2019s no data to subpoena. No records to request. No files to expunge. Because we never collected a thing. You own your data, start to finish. You can change it, delete it, walk away clean. No loose ends. No trailing threads. Just you and your 48 cells." },
-      { heading: "Leave a Message", body: "If you\u2019ve got questions \u2014 the kind that keep you up at 3 AM staring at the ceiling fan \u2014 reach out at yourbroadideas.com or gridpad.net. We\u2019ll be here. The light\u2019s always on." }
-    ]
-  }
-};
-
-// --- Render ---
-let currentVoice = "standard";
-
-const pillsEl = document.getElementById("pills");
-const contentEl = document.getElementById("content");
-const badgeEl = document.getElementById("badge");
-const introEl = document.getElementById("intro");
-const sectionsEl = document.getElementById("sections");
-
-function renderPills() {
-  pillsEl.innerHTML = "";
-  VOICES.forEach(v => {
-    const btn = document.createElement("button");
-    btn.className = "pp-pill" + (v.id === currentVoice ? " active" : "");
-    btn.innerHTML = `<span>${v.emoji}</span>${v.label}`;
-    btn.addEventListener("click", () => switchVoice(v.id));
-    pillsEl.appendChild(btn);
-  });
-}
-
-function renderContent() {
-  const data = CONTENT[currentVoice];
-  const voiceObj = VOICES.find(v => v.id === currentVoice);
-
-  if (currentVoice !== "standard") {
-    badgeEl.textContent = "";
-    badgeEl.textContent = voiceObj.emoji + " Reading as: " + voiceObj.label;
-    badgeEl.classList.add("show");
-  } else {
-    badgeEl.classList.remove("show");
+  // ─── IMAGE COMPRESSION ───
+  function compressImage(file, maxDimension, quality) {
+    maxDimension = maxDimension || 800;
+    quality = quality || 0.65;
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var w = img.width;
+          var h = img.height;
+          // Scale down if needed
+          if (w > maxDimension || h > maxDimension) {
+            if (w > h) {
+              h = Math.round(h * (maxDimension / w));
+              w = maxDimension;
+            } else {
+              w = Math.round(w * (maxDimension / h));
+              h = maxDimension;
+            }
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          var dataUrl = canvas.toDataURL('image/jpeg', quality);
+          resolve(dataUrl);
+        };
+        img.onerror = function() { reject(new Error('Failed to load image')); };
+        img.src = e.target.result;
+      };
+      reader.onerror = function() { reject(new Error('Failed to read file')); };
+      reader.readAsDataURL(file);
+    });
   }
 
-  introEl.textContent = data.intro;
+  // ─── STORAGE HELPERS ───
+  function getStorageUsageBytes() {
+    var total = 0;
+    for (var key in localStorage) {
+      if (localStorage.hasOwnProperty(key)) {
+        total += (localStorage[key].length + key.length) * 2; // UTF-16
+      }
+    }
+    return total;
+  }
 
-  sectionsEl.innerHTML = "";
-  data.sections.forEach(s => {
-    const div = document.createElement("div");
-    div.className = "pp-section";
-    const h2 = document.createElement("h2");
-    h2.textContent = s.heading;
-    const p = document.createElement("p");
-    p.textContent = s.body;
-    div.appendChild(h2);
-    div.appendChild(p);
-    sectionsEl.appendChild(div);
+  function getStorageUsageMB() {
+    return (getStorageUsageBytes() / (1024 * 1024)).toFixed(1);
+  }
+
+  // ─── PERSISTENCE ───
+  function loadData() {
+    try {
+      const raw = localStorage.getItem('gridpad_data');
+      if (raw) cellData = JSON.parse(raw);
+      const cols = localStorage.getItem('gridpad_cols');
+      if (cols) gridCols = parseInt(cols);
+      const theme = localStorage.getItem('gridpad_theme');
+      if (theme) {
+        currentTheme = theme;
+        document.body.setAttribute('data-theme', theme);
+        updateThemePickerUI();
+      }
+    } catch(e) { console.warn('Could not load data:', e); }
+  }
+
+  function saveData() {
+    try {
+      localStorage.setItem('gridpad_data', JSON.stringify(cellData));
+      localStorage.setItem('gridpad_cols', gridCols.toString());
+      localStorage.setItem('gridpad_theme', currentTheme);
+    } catch(e) {
+      console.warn('Could not save data:', e);
+      alert('Storage is full! Try removing some images to free up space.');
+    }
+  }
+
+  // ─── THEME ───
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.body.setAttribute('data-theme', theme);
+    updateThemePickerUI();
+    saveData();
+    closeThemePicker();
+    // Notify Android host to update system bar colors
+    if (window.AndroidBridge && window.AndroidBridge.onThemeChanged) {
+      window.AndroidBridge.onThemeChanged(theme);
+    }
+  }
+
+  function updateThemePickerUI() {
+    document.querySelectorAll('.theme-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.theme === currentTheme);
+    });
+  }
+
+  function toggleThemePicker() {
+    const picker = document.getElementById('themePicker');
+    picker.classList.toggle('visible');
+  }
+
+  function closeThemePicker() {
+    document.getElementById('themePicker').classList.remove('visible');
+  }
+
+  // Close picker when tapping outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.theme-toggle') && !e.target.closest('.theme-picker')) {
+      closeThemePicker();
+    }
   });
-}
 
-function switchVoice(id) {
-  if (id === currentVoice) return;
+  // ─── GRID ───
+  function setGrid(cols) {
+    gridCols = cols;
+    document.querySelectorAll('.grid-size-btn').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.cols) === cols);
+    });
+    saveData();
+    renderGrid();
+  }
 
-  contentEl.classList.remove("visible");
-  contentEl.classList.add("hidden");
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    const rows = Math.ceil(TOTAL_CELLS / gridCols);
+    grid.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    grid.innerHTML = '';
 
-  setTimeout(() => {
-    currentVoice = id;
-    renderPills();
-    renderContent();
-    contentEl.classList.remove("hidden");
-    contentEl.classList.add("visible");
-  }, 280);
-}
+    for (let i = 0; i < TOTAL_CELLS; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      const data = cellData[i];
+      const hasContent = data && (
+        (data.texts && data.texts.some(t => t.trim())) ||
+        (data.urls && data.urls.some(u => u.trim())) ||
+        (data.images && data.images.some(img => img.trim()))
+      );
 
-// Init
-renderPills();
-renderContent();
+      if (hasContent) {
+        cell.classList.add('has-content');
+        const preview = document.createElement('div');
+        preview.className = 'cell-preview';
+
+        if (data.texts) {
+          data.texts.filter(t => t.trim()).forEach(t => {
+            const el = document.createElement('div');
+            el.className = 'cell-preview-text';
+            el.textContent = t;
+            preview.appendChild(el);
+          });
+        }
+        if (data.urls) {
+          data.urls.filter(u => u.trim()).forEach(u => {
+            const el = document.createElement('div');
+            el.className = 'cell-preview-url';
+            el.textContent = u;
+            preview.appendChild(el);
+          });
+        }
+        if (data.images) {
+          data.images.filter(img => img.trim()).forEach(src => {
+            const el = document.createElement('img');
+            el.className = 'cell-preview-img';
+            el.src = src;
+            el.alt = '';
+            el.onerror = () => el.style.display = 'none';
+            preview.appendChild(el);
+          });
+        }
+        cell.appendChild(preview);
+      } else {
+        const icon = document.createElement('div');
+        icon.className = 'cell-empty-icon';
+        icon.textContent = '+';
+        cell.appendChild(icon);
+      }
+
+      cell.addEventListener('click', () => openCell(i));
+      grid.appendChild(cell);
+    }
+  }
+
+  // ─── OVERLAY ───
+  function openCell(index) {
+    currentCell = index;
+    isEditing = false;
+    editDirty = false;
+    showViewMode();
+    const overlay = document.getElementById('overlay');
+    overlay.classList.add('visible');
+    document.getElementById('overlayTitle').textContent = 'Cell ' + (index + 1);
+  }
+
+  function showViewMode() {
+    isEditing = false;
+    const body = document.getElementById('overlayBody');
+    const footer = document.getElementById('overlayFooter');
+    const data = cellData[currentCell] || { texts: [], urls: [], images: [] };
+    const hasContent =
+      (data.texts && data.texts.some(t => t.trim())) ||
+      (data.urls && data.urls.some(u => u.trim())) ||
+      (data.images && data.images.some(img => img.trim()));
+
+    if (!hasContent) {
+      body.innerHTML =
+        '<div class="empty-state">' +
+        '<div class="empty-state-icon">📋</div>' +
+        '<div class="empty-state-text">Nothing here yet...</div>' +
+        '</div>';
+    } else {
+      let html = '<div class="view-content">';
+      let delay = 0;
+
+      if (data.texts) {
+        data.texts.filter(t => t.trim()).forEach(t => {
+          html += '<div class="content-item" style="animation-delay:' + delay + 's">' +
+            '<div class="content-item-type">Text</div>' +
+            '<div class="content-item-text">' + escapeHtml(t) + '</div>' +
+            '</div>';
+          delay += 0.05;
+        });
+      }
+      if (data.urls) {
+        data.urls.filter(u => u.trim()).forEach(u => {
+          const href = u.startsWith('http') ? u : 'https://' + u;
+          html += '<div class="content-item" style="animation-delay:' + delay + 's">' +
+            '<div class="content-item-type">Link</div>' +
+            '<a class="content-item-url" href="' + escapeHtml(href) + '" target="_blank" rel="noopener">' + escapeHtml(u) + '</a>' +
+            '</div>';
+          delay += 0.05;
+        });
+      }
+      if (data.images) {
+        data.images.filter(img => img.trim()).forEach(src => {
+          html += '<div class="content-item" style="animation-delay:' + delay + 's">' +
+            '<div class="content-item-type">Image</div>' +
+            '<img class="content-item-image" src="' + escapeHtml(src) + '" alt="" onerror="this.style.display=\'none\'">' +
+            '</div>';
+          delay += 0.05;
+        });
+      }
+
+      html += '</div>';
+      body.innerHTML = html;
+    }
+
+    footer.innerHTML = '<button class="btn btn-primary" onclick="showEditMode()">Edit</button>';
+  }
+
+  function showEditMode() {
+    isEditing = true;
+    editDirty = false;
+    const footer = document.getElementById('overlayFooter');
+    const data = cellData[currentCell] || { texts: [''], urls: [''], images: [''] };
+
+    if (!data.texts || data.texts.length === 0) data.texts = [''];
+    if (!data.urls || data.urls.length === 0) data.urls = [''];
+    if (!data.images || data.images.length === 0) data.images = [''];
+
+    renderEditForm(data);
+
+    footer.innerHTML =
+      '<button class="btn btn-save" onclick="saveChanges()">Save</button>' +
+      '<button class="btn" onclick="handleClose()">Close</button>';
+  }
+
+  function renderEditForm(data) {
+    const body = document.getElementById('overlayBody');
+    let html = '<div class="edit-form">';
+
+    // TEXTS
+    html += '<div class="edit-section">' +
+      '<div class="edit-section-header">' +
+      '<span class="edit-section-title">📝 Text</span>' +
+      '<button class="add-item-btn" onclick="addField(\'texts\')">+ add</button>' +
+      '</div>';
+    data.texts.forEach((t, i) => {
+      html += '<div class="edit-item">' +
+        '<textarea class="edit-input" data-type="texts" data-index="' + i + '" placeholder="Write something..." oninput="markDirty()">' + escapeHtml(t) + '</textarea>' +
+        '<button class="remove-item-btn" onclick="removeField(\'texts\', ' + i + ')">×</button>' +
+        '</div>';
+    });
+    html += '</div>';
+
+    // URLS
+    html += '<div class="edit-section">' +
+      '<div class="edit-section-header">' +
+      '<span class="edit-section-title">🔗 URLs</span>' +
+      '<button class="add-item-btn" onclick="addField(\'urls\')">+ add</button>' +
+      '</div>';
+    data.urls.forEach((u, i) => {
+      html += '<div class="edit-item">' +
+        '<input class="edit-input" data-type="urls" data-index="' + i + '" placeholder="https://..." value="' + escapeHtml(u) + '" oninput="markDirty()">' +
+        '<button class="remove-item-btn" onclick="removeField(\'urls\', ' + i + ')">×</button>' +
+        '</div>';
+    });
+    html += '</div>';
+
+    // IMAGES — new upload-first UI
+    html += '<div class="edit-section">' +
+      '<div class="edit-section-header">' +
+      '<span class="edit-section-title">🖼️ Images</span>' +
+      '<button class="add-item-btn" onclick="addField(\'images\')">+ add</button>' +
+      '</div>';
+    data.images.forEach((img, i) => {
+      var hasImg = img && img.trim();
+      var isDataUrl = hasImg && img.startsWith('data:');
+      html += '<div class="edit-item" style="flex-direction:column; align-items:stretch;">' +
+        '<div style="display:flex; gap:6px; align-items:flex-start;">' +
+          '<div class="image-edit-block">' +
+            // Hidden input holds the actual value (base64 or URL)
+            '<input type="hidden" data-type="images" data-index="' + i + '" value="' + (hasImg ? escapeHtml(img) : '') + '">' +
+            // Upload button
+            '<button type="button" class="image-upload-btn" onclick="triggerImageUpload(' + i + ')">' +
+              '<span class="upload-icon">📂</span> Choose from Gallery' +
+            '</button>' +
+            // Thumbnail preview
+            '<div class="image-thumb-preview' + (hasImg ? ' has-image' : '') + '" id="imgPreview' + i + '">' +
+              (hasImg ? '<img src="' + escapeHtml(img) + '" alt="" onerror="this.style.display=\'none\'">' : '') +
+              (hasImg ? '<button class="image-thumb-remove" onclick="clearImage(' + i + ')">×</button>' : '') +
+            '</div>' +
+            // URL toggle
+            '<button type="button" class="image-url-toggle" onclick="toggleUrlInput(' + i + ')">or paste image URL</button>' +
+            // URL input (hidden by default, shown if current value is a URL)
+            '<div class="image-url-wrapper' + (hasImg && !isDataUrl ? ' visible' : '') + '" id="imgUrlWrap' + i + '">' +
+              '<input class="edit-input" id="imgUrlInput' + i + '" placeholder="https://..." value="' + (hasImg && !isDataUrl ? escapeHtml(img) : '') + '" oninput="onImageUrlInput(' + i + ')">' +
+            '</div>' +
+          '</div>' +
+          '<button class="remove-item-btn" onclick="removeField(\'images\', ' + i + ')">×</button>' +
+        '</div>' +
+      '</div>';
+    });
+    html += '</div>';
+
+    // Storage usage bar
+    var usageMB = parseFloat(getStorageUsageMB());
+    var maxMB = 10;
+    var pct = Math.min(100, (usageMB / maxMB) * 100);
+    var isWarning = usageMB > 8;
+    html += '<div class="storage-bar">' +
+      '<div class="storage-label">Local Storage — On Your Device</div>' +
+      '<div class="storage-track"><div class="storage-fill' + (isWarning ? ' warning' : '') + '" style="width:' + pct + '%"></div></div>' +
+      '<div class="storage-text">' + usageMB + ' MB / ~' + maxMB + ' MB</div>' +
+    '</div>';
+
+    html += '</div>';
+    body.innerHTML = html;
+  }
+
+  // ─── IMAGE UPLOAD HANDLERS ───
+  function triggerImageUpload(index) {
+    activeImageIndex = index;
+    var fileInput = document.getElementById('imageFileInput');
+    fileInput.value = '';
+    fileInput.click();
+  }
+
+  // File input change handler
+  document.getElementById('imageFileInput').addEventListener('change', function(e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file || activeImageIndex === null) return;
+    var idx = activeImageIndex;
+
+    compressImage(file, 800, 0.65).then(function(dataUrl) {
+      // Set hidden input value
+      var hidden = document.querySelector('input[data-type="images"][data-index="' + idx + '"]');
+      if (hidden) hidden.value = dataUrl;
+
+      // Show preview
+      var preview = document.getElementById('imgPreview' + idx);
+      if (preview) {
+        preview.innerHTML = '<img src="' + dataUrl + '" alt="">' +
+          '<button class="image-thumb-remove" onclick="clearImage(' + idx + ')">×</button>';
+        preview.classList.add('has-image');
+      }
+
+      // Clear URL input if any
+      var urlInput = document.getElementById('imgUrlInput' + idx);
+      if (urlInput) urlInput.value = '';
+      var urlWrap = document.getElementById('imgUrlWrap' + idx);
+      if (urlWrap) urlWrap.classList.remove('visible');
+
+      markDirty();
+    }).catch(function(err) {
+      console.warn('Image compression failed:', err);
+      alert('Could not process image. Please try another one.');
+    });
+  });
+
+  function clearImage(index) {
+    var hidden = document.querySelector('input[data-type="images"][data-index="' + index + '"]');
+    if (hidden) hidden.value = '';
+    var preview = document.getElementById('imgPreview' + index);
+    if (preview) {
+      preview.innerHTML = '';
+      preview.classList.remove('has-image');
+    }
+    var urlInput = document.getElementById('imgUrlInput' + index);
+    if (urlInput) urlInput.value = '';
+    markDirty();
+  }
+
+  function toggleUrlInput(index) {
+    var wrap = document.getElementById('imgUrlWrap' + index);
+    if (wrap) {
+      wrap.classList.toggle('visible');
+      if (wrap.classList.contains('visible')) {
+        var input = document.getElementById('imgUrlInput' + index);
+        if (input) input.focus();
+      }
+    }
+  }
+
+  function onImageUrlInput(index) {
+    var urlInput = document.getElementById('imgUrlInput' + index);
+    var hidden = document.querySelector('input[data-type="images"][data-index="' + index + '"]');
+    if (urlInput && hidden) {
+      hidden.value = urlInput.value;
+    }
+    // Show preview if URL looks valid
+    var val = urlInput ? urlInput.value.trim() : '';
+    var preview = document.getElementById('imgPreview' + index);
+    if (val && (val.startsWith('http://') || val.startsWith('https://'))) {
+      if (preview) {
+        preview.innerHTML = '<img src="' + escapeHtml(val) + '" alt="" onerror="this.style.display=\'none\'">' +
+          '<button class="image-thumb-remove" onclick="clearImage(' + index + ')">×</button>';
+        preview.classList.add('has-image');
+      }
+    } else if (!val) {
+      if (preview) {
+        preview.innerHTML = '';
+        preview.classList.remove('has-image');
+      }
+    }
+    markDirty();
+  }
+
+  function markDirty() { editDirty = true; }
+
+  function getEditData() {
+    const data = { texts: [], urls: [], images: [] };
+    document.querySelectorAll('[data-type]').forEach(el => {
+      data[el.dataset.type][parseInt(el.dataset.index)] = el.value;
+    });
+    return data;
+  }
+
+  function addField(type) {
+    const data = getEditData();
+    data[type].push('');
+    editDirty = true;
+    renderEditForm(data);
+    if (type !== 'images') {
+      setTimeout(() => {
+        const fields = document.querySelectorAll('[data-type="' + type + '"]');
+        if (fields.length) fields[fields.length - 1].focus();
+      }, 50);
+    }
+  }
+
+  function removeField(type, index) {
+    const data = getEditData();
+    data[type].splice(index, 1);
+    if (data[type].length === 0) data[type] = [''];
+    editDirty = true;
+    renderEditForm(data);
+  }
+
+  function saveChanges() {
+    const data = getEditData();
+    cellData[currentCell] = data;
+    saveData();
+    editDirty = false;
+    showViewMode();
+    renderGrid();
+  }
+
+  function handleClose() {
+    if (isEditing && editDirty) {
+      document.getElementById('dialogBackdrop').classList.add('visible');
+    } else {
+      closeOverlay();
+    }
+  }
+
+  function saveAndClose() {
+    document.getElementById('dialogBackdrop').classList.remove('visible');
+    saveChanges();
+    closeOverlay();
+  }
+
+  function discardChanges() {
+    document.getElementById('dialogBackdrop').classList.remove('visible');
+    editDirty = false;
+    closeOverlay();
+  }
+
+  function closeOverlay() {
+    document.getElementById('overlay').classList.remove('visible');
+    currentCell = null;
+    isEditing = false;
+    editDirty = false;
+  }
+
+  // ─── UTILS ───
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ─── KEYBOARD ───
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('dialogBackdrop').classList.contains('visible')) {
+        discardChanges();
+      } else if (document.getElementById('overlay').classList.contains('visible')) {
+        handleClose();
+      }
+    }
+  });
+
+  // ─── ANDROID BACK BUTTON ───
+  window.addEventListener('popstate', (e) => {
+    if (document.getElementById('dialogBackdrop').classList.contains('visible')) {
+      discardChanges();
+      e.preventDefault();
+    } else if (document.getElementById('overlay').classList.contains('visible')) {
+      handleClose();
+      e.preventDefault();
+    }
+  });
+
+  // Push initial state for back button handling
+  if (window.history && window.history.pushState) {
+    window.history.pushState({}, '');
+  }
+
+  // ─── INIT ───
+  loadData();
+  setGrid(gridCols);
 </script>
-
 </body>
 </html>
