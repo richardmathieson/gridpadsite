@@ -160,32 +160,71 @@
     position: absolute;
     inset: 0;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 3px;
+    padding: 3px;
     pointer-events: none;
     z-index: 0;
   }
 
   .hero-grid-cell {
-    border: 1px solid rgba(74, 158, 255, 0.04);
-    border-radius: 2px;
-    transition: background 0.4s ease, border-color 0.3s ease;
+    border-radius: 6px;
+    transition: opacity 0.6s ease, transform 0.3s ease, filter 0.4s ease;
     pointer-events: auto;
+    opacity: 0.85;
   }
 
   .hero-grid-cell:hover {
-    background: rgba(74, 158, 255, 0.06);
-    border-color: rgba(74, 158, 255, 0.12);
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    z-index: 1;
   }
 
-  .hero-grid-cell.glow-1 { background: rgba(74, 158, 255, 0.05); }
-  .hero-grid-cell.glow-2 { background: rgba(100, 200, 255, 0.04); }
-  .hero-grid-cell.glow-3 { background: rgba(240, 160, 80, 0.04); }
+  .hero-grid-cell.glow-pulse {
+    opacity: 1;
+    filter: brightness(1.15) saturate(1.2);
+    transition: opacity 0.4s ease, filter 0.4s ease;
+  }
+
+  /* ─── HERO GLASS PANEL ─── */
+  .hero-glass {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    background: rgba(10, 12, 20, 0.62);
+    backdrop-filter: blur(22px) saturate(1.4);
+    -webkit-backdrop-filter: blur(22px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+    padding: 3rem 3.5rem 2.8rem;
+    max-width: 680px;
+    width: 100%;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
 
   .hero > *:not(.hero-grid-bg) {
     position: relative;
     z-index: 1;
+  }
+
+  .hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .hero::before {
@@ -200,6 +239,7 @@
     pointer-events: none;
     z-index: 0;
   }
+
 
   .hero-badge {
     display: inline-flex;
@@ -1303,29 +1343,31 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid-bg" id="heroGrid"></div>
-  <div class="hero-badge">
-    <span class="dot"></span>
-    Available now on iOS
-  </div>
-  <h1>Your mind,<br><span class="caveat">organised.</span></h1>
-  <p class="hero-sub">
-    GridPad is a note-taking app built on one radical constraint: 48 cells. No more. No less. Your notes stay exactly where you left them.
-  </p>
-  <div class="hero-number">
-    <span class="big">48</span>
-    <span class="label">
-      <strong>cells. That's it.</strong>
-      If you need space, make space.
-    </span>
-  </div>
-  <div class="hero-ctas">
-    <a href="https://apps.apple.com/gb/app/grid-pad/id6759792629" class="btn-primary" target="_blank" rel="noopener">
-      Download on the App Store
-    </a>
-    <p class="android-testers">
-      Android user? We need beta testers. Email <a href="mailto:nottheg3008@gmail.com">nottheg3008@gmail.com</a> for a free copy and early access.
+  <div class="hero-glass">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Available now on iOS
+    </div>
+    <h1>Your mind,<br><span class="caveat">organised.</span></h1>
+    <p class="hero-sub">
+      GridPad is a note-taking app built on one radical constraint: 48 cells. No more. No less. Your notes stay exactly where you left them.
     </p>
-  </div>
+    <div class="hero-number">
+      <span class="big">48</span>
+      <span class="label">
+        <strong>cells. That's it.</strong>
+        If you need space, make space.
+      </span>
+    </div>
+    <div class="hero-ctas">
+      <a href="https://apps.apple.com/gb/app/grid-pad/id6759792629" class="btn-primary" target="_blank" rel="noopener">
+        Download on the App Store
+      </a>
+      <p class="android-testers">
+        Android user? We need beta testers. Email <a href="/cdn-cgi/l/email-protection#2c4243585844494b1f1c1c146c4b414d4540024f4341"><span class="__cf_email__" data-cfemail="4b25243f3f232e2c787b7b730b2c262a222765282426">[email&#160;protected]</span></a> for a free copy and early access.
+      </p>
+    </div>
+  </div><!-- /.hero-glass -->
 </section>
 
 <!-- GRID DEMO -->
@@ -1603,7 +1645,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         Download on the App Store
       </a>
     </div>
-    <p class="cta-android-note">Android user? Email <a href="mailto:nottheg3008@gmail.com">nottheg3008@gmail.com</a> for a free copy and early access.</p>
+    <p class="cta-android-note">Android user? Email <a href="/cdn-cgi/l/email-protection#9cf2f3e8e8f4f9fbafacaca4dcfbf1fdf5f0b2fff3f1"><span class="__cf_email__" data-cfemail="2c4243585844494b1f1c1c146c4b414d4540024f4341">[email&#160;protected]</span></a> for a free copy and early access.</p>
   </div>
 </section>
 
@@ -1616,7 +1658,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Intersection Observer for scroll reveals
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1708,36 +1750,52 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     });
   });
 
-  // Generate hero grid background
+  // Generate 7×7 hero grid with vibrant spectrum colours
   const heroGrid = document.getElementById('heroGrid');
-  for (let i = 0; i < 96; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'hero-grid-cell';
-    heroGrid.appendChild(cell);
-  }
 
-  // Ambient glow effect - randomly light up cells
-  const heroGridCells = heroGrid.querySelectorAll('.hero-grid-cell');
-  const glowClasses = ['glow-1', 'glow-2', 'glow-3'];
+  // Spectrum colours across 7 columns × 7 rows
+  // Columns sweep the hue wheel; rows modulate lightness slightly
+  const COLS = 7, ROWS = 7;
+  // Hue anchors per column (green → yellow → orange → red → pink → violet → blue)
+  const colHues = [130, 90, 55, 25, 345, 290, 210];
 
-  function ambientGlow() {
-    // Clear some random cells
-    const activeCells = heroGrid.querySelectorAll('.glow-1, .glow-2, .glow-3');
-    activeCells.forEach(cell => {
-      if (Math.random() > 0.6) {
-        cell.classList.remove('glow-1', 'glow-2', 'glow-3');
-      }
-    });
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      const cell = document.createElement('div');
+      cell.className = 'hero-grid-cell';
 
-    // Light up a few random cells
-    for (let i = 0; i < 3; i++) {
-      const randomCell = heroGridCells[Math.floor(Math.random() * heroGridCells.length)];
-      const randomGlow = glowClasses[Math.floor(Math.random() * glowClasses.length)];
-      randomCell.classList.add(randomGlow);
+      const hue = colHues[col];
+      // Rows vary saturation/lightness: top rows cooler & brighter, bottom warmer & deeper
+      const sat = 72 + row * 2;
+      const lit = 62 - row * 4;
+
+      cell.style.background = `hsl(${hue}, ${sat}%, ${lit}%)`;
+      cell.dataset.hue = hue;
+      cell.dataset.sat = sat;
+      cell.dataset.lit = lit;
+
+      heroGrid.appendChild(cell);
     }
   }
 
-  setInterval(ambientGlow, 1200);
+  // Ambient pulse — randomly brightens a handful of cells
+  const heroGridCells = heroGrid.querySelectorAll('.hero-grid-cell');
+
+  function ambientGlow() {
+    heroGridCells.forEach(cell => {
+      cell.classList.remove('glow-pulse');
+      cell.style.opacity = 0.22;
+    });
+    // Pick ~6 random cells to pulse
+    const count = 5 + Math.floor(Math.random() * 4);
+    for (let i = 0; i < count; i++) {
+      const cell = heroGridCells[Math.floor(Math.random() * heroGridCells.length)];
+      cell.classList.add('glow-pulse');
+      cell.style.opacity = 0.42;
+    }
+  }
+
+  setInterval(ambientGlow, 1400);
   ambientGlow();
 
 </script>
@@ -1801,16 +1859,4 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   // Track scroll depth
   var scrollMilestones = [25, 50, 75, 100];
   var firedMilestones = {};
-  window.addEventListener('scroll', function() {
-    var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-    scrollMilestones.forEach(function(m) {
-      if (scrollPct >= m && !firedMilestones[m]) {
-        firedMilestones[m] = true;
-        trackEvent('scroll_depth', { percent: m });
-      }
-    });
-  }, { passive: true });
-</script>
-
-</body>
-</html>
+  window.addEventLis
