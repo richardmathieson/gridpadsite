@@ -282,6 +282,37 @@
     display: block;
   }
 
+  .hero-ctas {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .hero-ctas .btn-primary {
+    font-size: 1.1rem;
+    padding: 0.85rem 2rem;
+  }
+
+  .android-testers {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 420px;
+    line-height: 1.5;
+  }
+
+  .android-testers a {
+    color: var(--blue-dot);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .android-testers a:hover {
+    text-decoration: underline;
+  }
+
   /* ─── GRID DEMO ─── */
   .grid-demo-section {
     padding: 2rem 2rem 3rem;
@@ -1050,6 +1081,16 @@
     margin-top: 0.8rem;
   }
 
+  .cta-android-note a {
+    color: var(--blue-dot);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .cta-android-note a:hover {
+    text-decoration: underline;
+  }
+
   .store-icon {
     width: 20px;
     height: 20px;
@@ -1246,6 +1287,7 @@
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
 
@@ -1255,7 +1297,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <div class="nav-links">
     <a href="#who-its-for">Who It's For</a>
     <a href="#how-it-works">How It Works</a>
-    <a href="https://apps.apple.com/gb/app/grid-pad/id6759792629" class="nav-cta" target="_blank" rel="noopener">App Store</a>
   </div>
 </nav>
 
@@ -1264,7 +1305,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <div class="hero-grid-bg" id="heroGrid"></div>
   <div class="hero-badge">
     <span class="dot"></span>
-    Available on iOS — Android coming soon
+    Available now on iOS
   </div>
   <h1>Your mind,<br><span class="caveat">organised.</span></h1>
   <p class="hero-sub">
@@ -1276,6 +1317,14 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <strong>cells. That's it.</strong>
       If you need space, make space.
     </span>
+  </div>
+  <div class="hero-ctas">
+    <a href="https://apps.apple.com/gb/app/grid-pad/id6759792629" class="btn-primary" target="_blank" rel="noopener">
+      Download on the App Store
+    </a>
+    <p class="android-testers">
+      Android user? We need beta testers. Email <a href="mailto:nottheg3008@gmail.com">nottheg3008@gmail.com</a> for a free copy and early access.
+    </p>
   </div>
 </section>
 
@@ -1554,7 +1603,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         Download on the App Store
       </a>
     </div>
-    <p class="cta-android-note">Android coming soon</p>
+    <p class="cta-android-note">Android user? Email <a href="mailto:nottheg3008@gmail.com">nottheg3008@gmail.com</a> for a free copy and early access.</p>
   </div>
 </section>
 
@@ -1568,22 +1617,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </footer>
 
 <script>
-  // Detect Android — swap App Store button to Coming Soon
-  if (/android/i.test(navigator.userAgent)) {
-    const navCta = document.querySelector('.nav-cta');
-    if (navCta) {
-      navCta.textContent = 'Coming Soon';
-      navCta.removeAttribute('href');
-      navCta.style.opacity = '0.6';
-      navCta.style.cursor = 'default';
-      navCta.style.pointerEvents = 'none';
-    }
-    const heroBadge = document.querySelector('.hero-badge');
-    if (heroBadge) {
-      heroBadge.innerHTML = '<span class="dot" style="background:var(--text-muted)"></span> Android coming soon — available now on iOS';
-    }
-  }
-
   // Intersection Observer for scroll reveals
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1707,6 +1740,76 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   setInterval(ambientGlow, 1200);
   ambientGlow();
 
+</script>
+
+<!-- Event tracking -->
+<script>
+  function trackEvent(name, data) {
+    if (window.va) {
+      window.va('event', Object.assign({ name: name }, data || {}));
+    }
+  }
+
+  // Track all external link clicks and mailto links
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+
+    var href = link.getAttribute('href') || '';
+
+    // App Store
+    if (href.indexOf('apps.apple.com') !== -1) {
+      var location = link.closest('.hero') ? 'hero' : link.closest('.cta-section') ? 'cta' : 'other';
+      trackEvent('app_store_click', { location: location });
+    }
+
+    // Email (Android tester)
+    if (href.indexOf('mailto:') === 0) {
+      trackEvent('email_click', { address: href.replace('mailto:', '') });
+    }
+
+    // Privacy policy
+    if (href.indexOf('privacy.html') !== -1) {
+      trackEvent('privacy_click');
+    }
+
+    // yourbroadideas.com
+    if (href.indexOf('yourbroadideas.com') !== -1) {
+      trackEvent('yourbroadideas_click');
+    }
+
+    // Nav links
+    if (link.closest('.nav-links') && href.indexOf('#') === 0) {
+      trackEvent('nav_click', { section: href });
+    }
+  });
+
+  // Track grid demo column switches
+  document.querySelectorAll('.col-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      trackEvent('grid_columns', { columns: btn.textContent.trim() });
+    });
+  });
+
+  // Track cell overlay opens
+  document.querySelectorAll('.demo-cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+      trackEvent('cell_open', { cell: cell.querySelector('.cell-title') ? cell.querySelector('.cell-title').textContent : 'unknown' });
+    });
+  });
+
+  // Track scroll depth
+  var scrollMilestones = [25, 50, 75, 100];
+  var firedMilestones = {};
+  window.addEventListener('scroll', function() {
+    var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    scrollMilestones.forEach(function(m) {
+      if (scrollPct >= m && !firedMilestones[m]) {
+        firedMilestones[m] = true;
+        trackEvent('scroll_depth', { percent: m });
+      }
+    });
+  }, { passive: true });
 </script>
 
 </body>
